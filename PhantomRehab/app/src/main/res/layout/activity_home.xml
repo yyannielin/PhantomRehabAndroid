@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@color/blue_theme"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="34dp"
+        >
+
+        <Button
+            android:id="@+id/btn_mProfile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/raleway"
+
+            android:text="@string/my_profile"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="15dp"
+            android:layout_marginEnd="20dp"
+
+            android:onClick="toProfile"
+            />
+
+        <Button
+            android:id="@+id/btn_mProgress"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+
+            android:background="@drawable/bg_input"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/my_progress"
+            android:textAllCaps="false"
+
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="15dp"
+            android:onClick="toProgress"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        >
+
+        <Button
+            android:id="@+id/btn_gmi"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/raleway"
+
+            android:text="@string/gmi"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="15dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="toGMI"
+            />
+
+        <Button
+            android:id="@+id/btn_meditation"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+
+            android:background="@drawable/bg_input"
+
+            android:fontFamily="@font/raleway"
+
+            android:onClick="toMed"
+            android:padding="4dp"
+            android:text="@string/meditation"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="15dp" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="230dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="37dp"
+        android:background="@drawable/bg_button"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:text="@string/log_out"
+        android:textAllCaps="false"
+
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:backgroundTint="@color/blue_theme"
+        app:cornerRadius="35dp"
+
+        android:onClick="logout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_up"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="83dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_mute"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="83dp"
+            />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gear"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="35dp"
+
+            android:onClick="toSettings"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

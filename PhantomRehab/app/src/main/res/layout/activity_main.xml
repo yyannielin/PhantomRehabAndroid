@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@color/blue_theme"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="34dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/sign_in"
+
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <EditText
+        android:id="@+id/enter_username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/bg_input"
+        android:drawableStart="@drawable/person_circle"
+
+        android:drawablePadding="30dp"
+        android:ems="10"
+        android:fontFamily="@font/raleway"
+
+        android:hint="@string/enter_username"
+        android:inputType="text"
+        android:paddingStart="26dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+
+        android:textColorHint="@color/grey_input"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/enter_pw"
+        android:layout_width="300dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="46dp"
+        android:background="@drawable/bg_input"
+        android:drawableStart="@drawable/lock"
+        android:drawablePadding="30dp"
+
+        android:ems="10"
+        android:fontFamily="@font/raleway"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"
+        android:paddingStart="26dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+
+        android:textColorHint="@color/grey_input"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="230dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/bg_button"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:text="@string/login"
+        android:textAllCaps="false"
+
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:backgroundTint="@color/blue_theme"
+        app:cornerRadius="35dp" />
+
+    <TextView
+        android:id="@+id/login_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="35dp"
+
+        android:text="@string/login_error"
+        android:textColor="@color/red"
+        />
+
+    <TextView
+        android:id="@+id/sign_up_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/raleway"
+        android:text="@string/don_t_have_an_account"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="34dp"
+        android:fontFamily="@font/raleway"
+        android:text="@string/sign_up_underline"
+        android:textColor="@color/blue_link"
+        android:textColorLink="@color/blue_link"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_up"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="83dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_mute"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="83dp"
+            />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gear"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="35dp"
+
+            android:onClick="toSettings"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
+

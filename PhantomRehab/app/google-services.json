@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "499923395552",
+    "project_id": "phantomrehab-ca63c",
+    "storage_bucket": "phantomrehab-ca63c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499923395552:android:7657abf8f20c2b00f6c185",
+        "android_client_info": {
+          "package_name": "com.example.phantomrehab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499923395552-p9dll7rihbhf07teig76nie8d0vhojsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr37zJRMVgQwQq4H0mnCOztluFFEngHW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499923395552-p9dll7rihbhf07teig76nie8d0vhojsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

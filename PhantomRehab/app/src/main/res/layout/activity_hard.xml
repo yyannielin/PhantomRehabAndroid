@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
+            android:background="@color/blue_theme"
+            android:fontFamily="@font/raleway_semibold"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/infobar_hard"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/grey_infobar"
+            android:gravity="center"
+
+            android:fontFamily="@font/raleway"
+
+            android:text="@string/hard"
+            android:textColor="@color/black"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/prompt_setup"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/raleway"
+            android:text="@string/promt_setup"
+
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/insn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="35dp"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/insn"
+
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/raleway"
+
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+            />
+
+        <Button
+            android:id="@+id/btn_done"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/raleway"
+
+            android:text="@string/done"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            app:backgroundTint="@color/blue_theme"
+            app:cornerRadius="35dp"
+
+            android:onClick="done"
+            />
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_return"-->
+<!--            android:layout_width="230dp"-->
+<!--            android:layout_height="59dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="22dp"-->
+<!--            android:layout_marginBottom="37dp"-->
+
+<!--            android:background="@drawable/bg_button"-->
+<!--            android:fontFamily="@font/raleway_semibold"-->
+
+<!--            android:text="@string/ret"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/black"-->
+
+<!--            android:textSize="24sp"-->
+<!--            app:backgroundTint="@color/blue_theme"-->
+<!--            app:cornerRadius="35dp"-->
+<!--            android:onClick="ret"/>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="35dp">
+
+            <ImageView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/info_circle"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="131dp"
+
+                android:onClick="toInfo"
+                />
+
+            <ImageView
+                android:id="@+id/volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_up"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="83dp"
+                android:visibility="invisible"
+                />
+
+            <ImageView
+                android:id="@+id/mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_mute"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="83dp"
+                />
+
+            <ImageView
+                android:id="@+id/setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gear"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="35dp"
+
+                android:onClick="toSettings"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

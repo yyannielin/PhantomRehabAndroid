@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="34dp"
+
+            android:background="@color/blue_theme"
+            android:fontFamily="@font/raleway_semibold"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginBottom="35dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/settings"
+            android:textColor="@color/black"
+            android:textSize="27sp" />
+
+        <Button
+            android:id="@+id/btn_lang"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="35dp"
+
+            android:background="@drawable/bg_input"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+            app:iconPadding="30dp"
+            android:drawableLeft="@drawable/translate"
+            android:paddingStart="26dp"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/language"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:ignore="RtlCompat"
+
+            android:onClick="toLang"
+            />
+
+        <Button
+            android:id="@+id/btn_color"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="35dp"
+
+            android:background="@drawable/bg_input"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+            app:iconPadding="30dp"
+            android:drawableLeft="@drawable/palette"
+            android:paddingStart="26dp"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/color"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:ignore="RtlCompat"
+
+            android:onClick="toColor"/>
+
+        <Button
+            android:id="@+id/btn_text"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="35dp"
+
+            android:background="@drawable/bg_input"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+            app:iconPadding="30dp"
+            android:drawableLeft="@drawable/fonts"
+            android:paddingStart="26dp"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/text_size"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:ignore="RtlCompat"
+
+            android:onClick="toTextSize"
+            />
+
+        <Button
+            android:id="@+id/btn_reminder"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="35dp"
+
+            android:background="@drawable/bg_input"
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+            app:iconPadding="30dp"
+            android:drawableLeft="@drawable/alarm"
+            android:paddingStart="26dp"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/reminder"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            tools:ignore="RtlCompat"
+
+            android:onClick="toReminder"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_return"-->
+<!--            android:layout_width="230dp"-->
+<!--            android:layout_height="59dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginBottom="37dp"-->
+
+<!--            android:background="@drawable/bg_button"-->
+<!--            android:fontFamily="@font/raleway_semibold"-->
+
+<!--            android:text="@string/ret"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/black"-->
+
+<!--            android:textSize="24sp"-->
+<!--            app:backgroundTint="@color/blue_theme"-->
+<!--            app:cornerRadius="35dp" />-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_up"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="35dp"
+                android:visibility="invisible"
+                />
+
+            <ImageView
+                android:id="@+id/mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_mute"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="35dp"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

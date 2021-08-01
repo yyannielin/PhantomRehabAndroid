@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">PhantomRehab</string>
+    <string name="sign_in">Sign In</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up_underline"><u>Sign up</u></string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_email">Enter email</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ret">Return</string>
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="hard">Hard</string>
+    <string name="login_error">Invalid administrator username or password</string>
+    <string name="level_1">Level 1</string>
+    <string name="random_hand">This is a random hand image</string>
+    <string name="left">Left</string>
+    <string name="next">Next</string>
+    <string name="promt_setup">Please set up your device as instructed.</string>
+    <string name="insn"><b>Instruction</b> <br/>
+        <br/>
+        <b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
+        <br/>
+        <b>2.</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br/>
+        <br/>
+        <b>3.</b> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
+    <string name="cancel"><u>Cancel</u></string>
+    <string name="log_out">Sign out</string>
+    <string name="meditation">Meditation</string>
+    <string name="gmi">GMI</string>
+    <string name="my_progress">My Progress</string>
+    <string name="my_profile">My Profile</string>
+    <string name="finish_msg">Congratulations! You\'ve finished.</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="color">Color</string>
+    <string name="text_size">Text size</string>
+    <string name="reminder">Reminder</string>
+    <string name="english">English</string>
+    <string name="espa_ol">Español</string>
+    <string name="twice_a_day">Twice a day</string>
+    <string name="none">None</string>
+    <string name="once_a_day">Once a day</string>
+    <string name="once_a_week">Once a week</string>
+    <string name="frequency">Frequency</string>
+    <string name="info_section">Info Section</string>
+    <string name="laterality_reconstruction">Laterality Reconstruction</string>
+    <string name="lr_content">Targets neurologic connections between the brain and the missing limb by having you identify body images as either left or right.<br/>
+<br/>
+By practicing this technique, your brain uses its movement planning areas to start normalizing messages between the brain and body.<br/>
+<br/>
+Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Try your best to not become frustrated if you are not a pro at this exercise at first. Recovery takes time and is not linear. Go easy on yourself and know that you are working toward progress. :)
+</string>
+    <string name="graded_motor_imaging">Graded Motor Imaging</string>
+    <string name="gmi_info">The brain has "maps" of the body and when an amputation happens, those maps no longer match the sensory and motor signals from the body. Graded Motor Imagery training techniques cause the brain to “re-think” the pain response that it has been experiencing since the amputation and adopt the image of the healthy hand in place of the injured limb.
+    </string>
+    <string name="done"><b>Done</b></string>
+    <string name="enter_cell_number">Enter cell number</string>
+</resources>

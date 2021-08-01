@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@color/blue_theme"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/set_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="34dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/language"
+
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <RelativeLayout
+        android:id="@+id/choose_english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/btn_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/radio_button_on"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            />
+
+        <ImageView
+            android:id="@+id/btn_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:src="@drawable/radio_button_off" />
+
+        <TextView
+            android:id="@+id/eng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="90dp"
+
+            android:textColor="@color/black"
+            android:text="@string/english"
+            android:textSize="24sp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/choose_spanish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/btn_on2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/radio_button_on"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/btn_off2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:src="@drawable/radio_button_off" />
+
+        <TextView
+            android:id="@+id/span"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="90dp"
+
+            android:textColor="@color/black"
+            android:text="@string/espa_ol"
+            android:textSize="24sp"
+            />
+
+    </RelativeLayout>
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_return"-->
+<!--        android:layout_width="230dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginBottom="37dp"-->
+
+<!--        android:background="@drawable/bg_button"-->
+<!--        android:fontFamily="@font/raleway_semibold"-->
+
+<!--        android:text="@string/ret"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="@color/black"-->
+
+<!--        android:textSize="24sp"-->
+<!--        app:backgroundTint="@color/blue_theme"-->
+<!--        app:cornerRadius="35dp"-->
+<!--        android:onClick="ret"/>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_up"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="83dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_mute"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="83dp"
+            />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gear"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="35dp"
+
+            android:onClick="toSettings"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
