@@ -1,9 +1,11 @@
 package com.example.phantomrehab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +13,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
+    TextView navbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
+
+        //color management
+        navbar = findViewById(R.id.navbar);
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+        }
 
         //manage music
         ImageView PlayIcon, MuteIcon;
@@ -47,10 +58,27 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        finish();
+//    public void logout(View view) {
+//        FirebaseAuth.getInstance().signOut();
+//        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//        finish();
+//    }
+
+    public void toMed(View view) {
+        startActivity(new Intent(getApplicationContext(), MedMenu.class));
+    }
+
+    public void toReminder(View view) {
+        startActivity(new Intent(getApplicationContext(), ReminderActivity.class));
+    }
+
+    public void toFAQ(View view) {
+        startActivity(new Intent(getApplicationContext(), FAQsActivity.class));
+    }
+
+    //tab bar control
+    public void toHome(View view) {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 
     public void toProfile(View view) {
@@ -65,11 +93,15 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),ChooseLevel.class));
     }
 
-    public void toMed(View view) {
-        startActivity(new Intent(getApplicationContext(),MedActivity.class));
-    }
-
     public void toSettings(View view) {
         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+    }
+
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }

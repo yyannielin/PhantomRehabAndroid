@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <attr name="navbar_color" format="color"/>
+        <attr name="btn_color" format="color"/>
+        <attr name="bg_color" format="color"/>
+    </declare-styleable>
+
+
+
+</resources>

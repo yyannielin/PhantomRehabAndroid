@@ -48,11 +48,20 @@ public class IntermedMain extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),IntermedVideo.class));
     }
 
-    public void ret(View view) {
-        startActivity(new Intent(getApplicationContext(),ChooseLevel.class));
+    //tab bar control
+    public void toProfile(View view) {
+        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+    }
+
+    public void toProgress(View view) {
+        startActivity(new Intent(getApplicationContext(),ProgressActivity.class));
     }
 
     public void toSettings(View view) {
         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+    }
+
+    public void toHome(View view) {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }

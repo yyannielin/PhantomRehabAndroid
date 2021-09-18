@@ -10,14 +10,30 @@
 
 <!--    theme -->
     <color name="blue_theme">#4997D0</color>
-    <color name="grey_secondary">#E5E5E5</color>
-    <color name="blue_tertiary">#81E1FF</color>
+    <color name="grey_secondary">#F0F0F0</color>
+    <color name="blue_tertiary">#62B0DF</color>
 
-    <color name="grey_infobar">#C4C4C4</color>
+    <color name="grey_infobar">#4D4D4D</color>
+    <color name="blue_left_btn">#5385A9</color>
+<!--    <color name="blue_light_bg">#C8EAFF</color>-->
+    <color name="blue_light_bg">#ABDFFF</color>
 
-<!--    text -->
+<!--    teal theme-->
+    <color name="teal_theme">#2990B0</color>
+    <color name="teal_tertiary">#72C6E1</color>
+    <color name="teal_light_bg">#A8EAFF</color>
+
+<!--    green theme-->
+    <color name="green_theme">#ABC18F</color>
+
+    <!--    purple theme-->
+    <color name="purple_theme">#A78FB1</color>
+
+
+    <!--    text -->
     <color name="grey_input">#99000000</color>
     <color name="blue_link">#0338F5</color>
     <color name="red">#FF0000</color>
+    <color name="blue_function">#5385A9</color>
 
 </resources>

@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignupActivity extends AppCompatActivity {
+public class  SignupActivity extends AppCompatActivity {
 
     private EditText Username, Phone, Email, Password, RePassword;
     private Button SignUp;
@@ -55,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //get values
+//                //get values
 
                 String user = Username.getText().toString().trim();
                 String phone = Phone.getText().toString().trim();
@@ -104,11 +104,11 @@ public class SignupActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(SignupActivity.this, "User created.",Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                    // FirebaseUser user = fAuth.getCurrentUser();
+                                     FirebaseUser user = fAuth.getCurrentUser();
                                     // updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(SignupActivity.this, "Authentication failed. " + task.getException().getMessage(),
+                                    Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException().getMessage(),
                                             Toast.LENGTH_LONG).show();
                                     //updateUI(null);
                                 }
@@ -120,10 +120,9 @@ public class SignupActivity extends AppCompatActivity {
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("users");
 
-                UserHelper helper = new UserHelper(user, phone, email, pw);
-
+                UserHelper helper = new UserHelper(user, email, pw, phone);
+//                reference.child(email).setValue(helper); //use unique email address as ID --> cannot because email contains incompatiable characters
                 reference.child(phone).setValue(helper); //use unique phone number as ID
-
             }
         });
 
@@ -153,14 +152,6 @@ public class SignupActivity extends AppCompatActivity {
                 PlayIcon.setVisibility(View.INVISIBLE);
             }
         });
-    }
-
-    public void ret(View view) {
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-    }
-
-    public void toSettings(View view) {
-        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
     }
 }
 

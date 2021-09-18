@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:fillViewport="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -18,7 +18,7 @@
             android:layout_height="80dp"
             android:layout_marginBottom="34dp"
 
-            android:background="@color/blue_theme"
+            android:background="?attr/navbar_color"
             android:fontFamily="@font/raleway_semibold"
             android:gravity="center"
             android:text="@string/app_name"
@@ -26,10 +26,12 @@
             android:textSize="27sp" />
 
         <TextView
-            android:id="@+id/settings"
+            android:id="@+id/title_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+
+            android:layout_below="@+id/navbar"
+            android:layout_centerHorizontal="true"
 
             android:layout_marginBottom="35dp"
             android:fontFamily="@font/raleway_semibold"
@@ -41,7 +43,9 @@
             android:id="@+id/btn_lang"
             android:layout_width="230dp"
             android:layout_height="59dp"
-            android:layout_gravity="center"
+
+            android:layout_below="@+id/title_settings"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
 
             android:background="@drawable/bg_input"
@@ -66,7 +70,9 @@
             android:id="@+id/btn_color"
             android:layout_width="230dp"
             android:layout_height="59dp"
-            android:layout_gravity="center"
+
+            android:layout_below="@+id/btn_lang"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
 
             android:background="@drawable/bg_input"
@@ -91,6 +97,9 @@
             android:layout_width="230dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
+
+            android:layout_below="@+id/btn_color"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
 
             android:background="@drawable/bg_input"
@@ -111,51 +120,12 @@
             android:onClick="toTextSize"
             />
 
-        <Button
-            android:id="@+id/btn_reminder"
-            android:layout_width="230dp"
-            android:layout_height="59dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="35dp"
-
-            android:background="@drawable/bg_input"
-            app:backgroundTint="@color/grey_secondary"
-            app:cornerRadius="35dp"
-            app:iconPadding="30dp"
-            android:drawableLeft="@drawable/alarm"
-            android:paddingStart="26dp"
-
-            android:fontFamily="@font/raleway"
-            android:text="@string/reminder"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            tools:ignore="RtlCompat"
-
-            android:onClick="toReminder"/>
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_return"-->
-<!--            android:layout_width="230dp"-->
-<!--            android:layout_height="59dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginBottom="37dp"-->
-
-<!--            android:background="@drawable/bg_button"-->
-<!--            android:fontFamily="@font/raleway_semibold"-->
-
-<!--            android:text="@string/ret"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="@color/black"-->
-
-<!--            android:textSize="24sp"-->
-<!--            app:backgroundTint="@color/blue_theme"-->
-<!--            app:cornerRadius="35dp" />-->
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tabbar"
+            android:layout_marginBottom="50dp"
+            >
 
             <ImageView
                 android:id="@+id/volume"
@@ -164,7 +134,7 @@
                 android:src="@drawable/volume_up"
 
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="20dp"
                 android:visibility="invisible"
                 />
 
@@ -175,11 +145,74 @@
                 android:src="@drawable/volume_mute"
 
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="20dp"
                 />
 
         </RelativeLayout>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/tabbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
+            android:background="@color/grey_secondary"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home"
+                android:layout_toStartOf="@+id/therapy"
+                android:layout_marginEnd="25dp"
+
+                android:onClick="toHome"
+                />
+
+            <ImageView
+                android:id="@+id/therapy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/therapy"
+                android:layout_toStartOf="@+id/progress"
+                android:layout_marginEnd="16dp"
+
+                android:onClick="toGMI"
+                />
+
+            <ImageView
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/process"
+                android:layout_centerHorizontal="true"
+
+                android:onClick="toProgress"
+                />
+
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile"
+                android:layout_toEndOf="@+id/progress"
+                android:layout_marginStart="22dp"
+
+                android:onClick="toProfile"
+                />
+
+            <ImageView
+                android:id="@+id/setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/settings_fill"
+                android:layout_toEndOf="@+id/profile"
+                android:layout_marginStart="24dp"
+                />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 
 </ScrollView>

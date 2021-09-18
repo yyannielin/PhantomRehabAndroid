@@ -23,18 +23,86 @@
             android:textColor="@color/black"
             android:textSize="27sp" />
 
-        <TextView
-            android:id="@+id/infobar_hard"
+        <RelativeLayout
+            android:id="@+id/infobar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/navbar"
+
+            android:background="@color/grey_secondary"
+            >
+
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+
+                android:paddingStart="30dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/raleway_semibold"
+                android:text="@string/start_stopwatch_intermed"
+
+                android:textColor="@color/blue_function"
+                android:textSize="20sp"
+                />
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/blue_function"
+
+                android:paddingStart="30dp"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                />
+
+            <ImageView
+                android:id="@+id/stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:layout_toStartOf="@+id/pause"
+                android:layout_marginEnd="20dp"
+
+                android:src="@drawable/stop_fill"
+                android:visibility="invisible"
+                />
+
+            <ImageView
+                android:id="@+id/pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+
+                android:src="@drawable/pause_fill"
+                android:visibility="invisible"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/save_progress"
             android:background="@color/grey_infobar"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+
+            android:layout_below="@id/infobar"
+            android:paddingStart="30dp"
+            android:gravity="center_vertical"
 
             android:fontFamily="@font/raleway"
+            android:text="@string/save_my_progress"
+            android:textColor="@color/blue_light_bg"
+            android:textSize="16sp"
 
-            android:text="@string/hard"
-            android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:onClick="saveProgress"
+            />
 
         <TextView
             android:id="@+id/prompt_setup"
@@ -162,15 +230,14 @@
                 />
 
             <ImageView
-                android:id="@+id/setting"
+                android:id="@+id/help"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gear"
+                android:src="@drawable/lightbulb"
+                android:layout_centerHorizontal="true"
 
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="35dp"
-
-                android:onClick="toSettings"
                 />
 
         </RelativeLayout>

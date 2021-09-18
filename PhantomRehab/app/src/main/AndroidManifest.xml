@@ -27,37 +27,44 @@
 
         <activity android:name=".SignupActivity"/>
 
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".MedMenu"/>
+        <activity android:name=".MedActivity"/>
+        <activity android:name=".MedFinish"/>
+        <activity android:name=".ReminderActivity"/>
+        <activity android:name=".FAQsActivity"/>
+
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".LangActivity"/>
         <activity android:name=".ColorActivity"/>
         <activity android:name=".TextSizeActivity"/>
-        <activity android:name=".ReminderActivity"/>
-
-        <activity android:name=".HomeActivity"/>
 
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".ProgressActivity"/>
         <activity android:name=".ChooseLevel"/>
-        <activity android:name=".MedActivity"/>
 
+        <activity android:name=".BeginnerIntro"/>
         <activity android:name=".BeginnerMain"/>
         <activity android:name=".BeginnerInfo"/>
+        <activity android:name=".BeginnerFinish"/>
 
         <activity android:name=".IntermedMain"/>
         <activity android:name=".IntermedVideo"/>
+        <activity android:name=".IntermedFinish"/>
 
         <activity android:name=".HardMain"/>
         <activity android:name=".HardInfo"/>
         <activity android:name=".HardFinish"/>
 
-        <activity android:name=".IntermedFinish"/>
-        <activity android:name=".MedFinish"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <service android:name=".MusicService"/>
+
+        <receiver android:name=".AlarmReceiver"/>
+
     </application>
 
 </manifest>

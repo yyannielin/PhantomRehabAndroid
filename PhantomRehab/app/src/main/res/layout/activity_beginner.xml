@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,131 +18,189 @@
         android:textColor="@color/black"
         android:textSize="27sp" />
 
-    <TextView
-        android:id="@+id/infobar_beginner"
+    <RelativeLayout
+        android:id="@+id/stopwatch"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/grey_infobar"
-        android:gravity="center"
-
-        android:fontFamily="@font/raleway"
-
-        android:text="@string/beginner"
-        android:textColor="@color/black"
-        android:textSize="24sp"/>
-
-    <TextView
-        android:id="@+id/level"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
 
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="22dp"
-        android:fontFamily="@font/raleway"
-        android:text="@string/level_1"
+        android:layout_below="@+id/navbar"
+        android:layout_marginBottom="60dp"
 
-        android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:background="@color/grey_secondary"
+        >
+
+        <TextView
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+
+            android:paddingStart="30dp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/start_stopwatch"
+
+            android:textColor="@color/blue_function"
+            android:textSize="20sp"
+            />
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/blue_function"
+
+            android:paddingStart="30dp"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+
+            android:src="@drawable/eye"
+            android:onClick="hideStopwatch"
+            />
+
+        <ImageView
+            android:id="@+id/show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+
+            android:src="@drawable/eye_slash"
+            android:visibility="invisible"
+            android:onClick="showStopwatch"
+            />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/stop"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+
+<!--            android:layout_toStartOf="@+id/pause"-->
+<!--            android:layout_marginEnd="20dp"-->
+
+<!--            android:src="@drawable/stop_fill"-->
+<!--            android:visibility="invisible"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/pause"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="20dp"-->
+
+<!--            android:src="@drawable/pause_fill"-->
+<!--            android:visibility="invisible"-->
+<!--            />-->
+
+    </RelativeLayout>
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_gravity="center"
+
+        android:layout_below="@+id/stopwatch"
+        android:layout_centerHorizontal="true"
+
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/random_hand_img"
+        android:src="@drawable/back1"
         android:contentDescription="@string/random_hand"
         />
 
     <LinearLayout
+        android:id="@+id/btn_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_above="@+id/tabbar"
+        android:gravity="center_horizontal"
+        >
 
-        <Button
+        <TextView
             android:id="@+id/btn_left"
-            android:layout_width="120dp"
-            android:layout_height="59dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="36dp"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            android:gravity="center"
 
-            android:background="@drawable/bg_input"
-            android:fontFamily="@font/raleway"
+            android:fontFamily="@font/raleway_semibold"
+            android:textSize="60sp"
 
             android:text="@string/left"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
 
-            android:textSize="24sp"
-            app:backgroundTint="@color/grey_secondary"
-            app:cornerRadius="35dp" />
+            android:background="@color/blue_left_btn"
+            />
 
-        <Button
+        <TextView
             android:id="@+id/btn_right"
-            android:layout_width="120dp"
-            android:layout_height="59dp"
-            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="125dp"
+            android:gravity="center"
 
-            android:background="@drawable/bg_input"
-            android:fontFamily="@font/raleway"
+            android:fontFamily="@font/raleway_semibold"
+            android:textSize="60sp"
 
-            android:text="Right"
+            android:text="@string/right"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
 
-            android:textSize="24sp"
-            app:backgroundTint="@color/grey_secondary"
-            app:cornerRadius="35dp" />
+            android:background="@color/blue_tertiary"
+            />
 
     </LinearLayout>
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_return"-->
-<!--        android:layout_width="230dp"-->
-<!--        android:layout_height="59dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="22dp"-->
-<!--        android:layout_marginBottom="37dp"-->
-
-<!--        android:background="@drawable/bg_button"-->
-<!--        android:fontFamily="@font/raleway_semibold"-->
-
-<!--        android:text="@string/ret"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/black"-->
-
-<!--        android:textSize="24sp"-->
-<!--        app:backgroundTint="@color/blue_theme"-->
-<!--        app:cornerRadius="35dp" />-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="35dp">
+        android:layout_above="@+id/btn_select"
+        android:layout_marginBottom="50dp"
+        >
 
-        <ImageView
-            android:id="@+id/info"
+        <TextView
+            android:id="@+id/show_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/info_circle"
+            android:text="@string/time_placeholder"
+            android:textSize="20sp"
+            android:fontFamily="@font/raleway_semibold"
+            android:layout_centerHorizontal="true"
+            />
 
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="131dp"
-            android:onClick="toInfo"
+        <TextView
+            android:id="@+id/show_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score_placeholder"
+            android:textSize="20sp"
+            android:fontFamily="@font/raleway_semibold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/show_time"
             />
 
         <ImageView
             android:id="@+id/volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_up"
+            android:src="@drawable/volume_float_mute"
 
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"
+            android:layout_marginEnd="20dp"
             android:visibility="invisible"
             />
 
@@ -150,20 +208,72 @@
             android:id="@+id/mute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_mute"
+            android:src="@drawable/volume_float"
 
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@color/grey_secondary"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_toStartOf="@+id/therapy"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="toHome"
+            />
+
+        <ImageView
+            android:id="@+id/therapy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/therapy_fill"
+            android:layout_toStartOf="@+id/progress"
+            android:layout_marginEnd="16dp"
+
+            android:onClick="toGMI"
+            />
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/process"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="toProgress"
+            />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:layout_toEndOf="@+id/progress"
+            android:layout_marginStart="22dp"
+
+            android:onClick="toProfile"
             />
 
         <ImageView
             android:id="@+id/setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/gear"
-
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
+            android:src="@drawable/settings"
+            android:layout_toEndOf="@+id/profile"
+            android:layout_marginStart="24dp"
 
             android:onClick="toSettings"
             />
@@ -171,4 +281,4 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

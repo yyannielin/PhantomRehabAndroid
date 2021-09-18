@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
+            android:background="@color/blue_theme"
+            android:fontFamily="@font/raleway_semibold"
+
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="27sp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/navbar"
+
+            android:text="@string/faqs"
+            android:textSize="27sp"
+            android:fontFamily="@font/raleway_semibold"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+
+            android:layout_below="@+id/title"
+
+            android:background="@color/white"
+            android:fontFamily="@font/raleway_semibold"
+
+            android:gravity="center_vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="Q: What is the purpose and benefit of using PhantomRehab?
+"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/f1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/q1"
+
+            android:background="@color/white"
+            android:fontFamily="@font/raleway"
+
+            android:gravity="center_vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="A: This app provides patients with easy to follow instructions on how to use a technique known as Graded Motor Imagery. Graded Motor Imagery is a 3-step process that uses evidence-based research to prime the central nervous system for maximal neuroplasticity, allowing the user to effectively rewire their brain to reduce their unwanted symptoms. The first step in the process is Laterality. This requires the user to identify between a L and a R body part while being timed for efficiency and accuracy. Once this level is mastered, the user can proceed to the next step: Imagined Movements. In this stage, the user is prompted to imagine themselves moving the affected body part in a pain-free way. The movements will start out simple and get progressively more complex as the user is ready to progress. If the user has mastered laterality but finds imagined movements to be painful or symptomatic, there are videos of others doing these movements that can be watched until the user is able to imagine themselves moving without issue. Once the Imagined Movements level has been mastered, the user progresses to the final stage of GMI: Mirror Therapy. In this level, the user employs the camera on their phone to act as a mirror, reflecting the unaffected limb in a way that makes the user feel it’s actually the affected limb. This stage utilizes cells in the brain known as mirror neurons which allow us to essentially trick our brain into thinking the projected image is really our own. Voluntary movements and various sensations are introduced to the non-affected body part, making it appear that these things are happening to both limbs. Once this final level is mastered, the user should be able to move their body in any way they want to without experiencing any of their previous symptoms.
+"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</ScrollView>
+

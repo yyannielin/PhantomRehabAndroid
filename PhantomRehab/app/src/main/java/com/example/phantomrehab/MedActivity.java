@@ -25,10 +25,6 @@ public class MedActivity  extends AppCompatActivity {
         getLifecycle().addObserver(YouTubePlayerView);
     }
 
-    public void ret(View view) {
-        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-    }
-
     public void done(View view) {
         startActivity(new Intent(getApplicationContext(),MedFinish.class));
     }

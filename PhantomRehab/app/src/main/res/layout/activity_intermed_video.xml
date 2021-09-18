@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/blue_light_bg"
+    >
 
     <TextView
         android:id="@+id/navbar"
@@ -18,10 +27,122 @@
         android:textColor="@color/black"
         android:textSize="27sp" />
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtube_player_view"
+    <RelativeLayout
+        android:id="@+id/infobar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:layout_below="@+id/navbar"
+
+        android:background="@color/grey_secondary"
+        >
+
+        <TextView
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+
+            android:paddingStart="30dp"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/start_stopwatch_intermed"
+
+            android:textColor="@color/blue_function"
+            android:textSize="20sp"
+            />
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/blue_function"
+
+            android:paddingStart="30dp"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:layout_toStartOf="@+id/pause"
+            android:layout_marginEnd="20dp"
+
+            android:src="@drawable/stop_fill"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+
+            android:src="@drawable/pause_fill"
+            android:visibility="invisible"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/save_progress"
+        android:background="@color/grey_infobar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+
+        android:layout_below="@id/infobar"
+        android:paddingStart="30dp"
+        android:gravity="center_vertical"
+
+        android:fontFamily="@font/raleway"
+        android:text="@string/save_my_progress"
+        android:textColor="@color/blue_light_bg"
+        android:textSize="16sp"
+
+        android:onClick="saveProgress"
+        />
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/save_progress"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+
+        app:videoId="yyduqrCpKGg"
+        app:autoPlay="true"
+        app:showFullScreenButton="true"
+        />
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/youtube_player_view1"
+        android:layout_marginBottom="30dp"
+
+        app:videoId="yyduqrCpKGg"
+        app:autoPlay="true"
+        app:showFullScreenButton="true"
+        />
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/youtube_player_view2"
+        android:layout_marginBottom="30dp"
+
         app:videoId="yyduqrCpKGg"
         app:autoPlay="true"
         app:showFullScreenButton="true"
@@ -31,8 +152,9 @@
         android:id="@+id/btn_next"
         android:layout_width="230dp"
         android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="35dp"
+        android:layout_below="@+id/youtube_player_view3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
 
         android:background="@drawable/bg_input"
         android:fontFamily="@font/raleway"
@@ -48,44 +170,69 @@
         android:onClick="done"
         />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_return"-->
-<!--        android:layout_width="230dp"-->
-<!--        android:layout_height="59dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="22dp"-->
-<!--        android:layout_marginBottom="37dp"-->
-
-<!--        android:background="@drawable/bg_button"-->
-<!--        android:fontFamily="@font/raleway_semibold"-->
-
-<!--        android:text="@string/ret"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/black"-->
-
-<!--        android:textSize="24sp"-->
-<!--        app:backgroundTint="@color/blue_theme"-->
-<!--        app:cornerRadius="35dp"-->
-<!--        android:onClick="ret"/>-->
-
     <RelativeLayout
+        android:id="@+id/tabbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@color/grey_secondary"
+        android:layout_below="@+id/btn_next"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_toStartOf="@+id/therapy"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="toHome"
+            />
+
+        <ImageView
+            android:id="@+id/therapy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/therapy"
+            android:layout_toStartOf="@+id/progress"
+            android:layout_marginEnd="16dp"
+            />
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/process"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="toProgress"
+            />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:layout_toEndOf="@+id/progress"
+            android:layout_marginStart="22dp"
+
+            android:onClick="toProfile"
+            />
 
         <ImageView
             android:id="@+id/setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/gear"
-
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
+            android:src="@drawable/settings"
+            android:layout_toEndOf="@+id/profile"
+            android:layout_marginStart="24dp"
 
             android:onClick="toSettings"
             />
 
     </RelativeLayout>
 
+</RelativeLayout>
 
-</LinearLayout>
+</ScrollView>

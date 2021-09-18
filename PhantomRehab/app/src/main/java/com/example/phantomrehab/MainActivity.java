@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +21,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText Username, Password;
+    private EditText Username, Password, Cell;
     private Button Login;
-    private TextView LoginError, SignUp;
+    private TextView LoginError;
 
     private FirebaseAuth fAuth;
 
-    MediaPlayer player;
     private ImageView PlayIcon, MuteIcon;
 
     @Override
@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         //initialization
         Username = (EditText) findViewById(R.id.enter_username);
+        Cell = (EditText) findViewById(R.id.enter_phone);
         Password = (EditText) findViewById(R.id.enter_pw);
         Login = (Button) findViewById(R.id.btn_login);
         LoginError = (TextView) findViewById(R.id.login_error);
         LoginError.setText("");
-        SignUp = (TextView) findViewById(R.id.sign_up);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -62,21 +62,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register();
-            }
-        });
-
         //play background music upon launching app
-//        play();
         startService(new Intent(getApplicationContext(), MusicService.class));
 
         MuteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                pause();
                 stopService(new Intent(getApplicationContext(), MusicService.class));
 
                 //update UI
@@ -88,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         PlayIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                play();
                 startService(new Intent(getApplicationContext(), MusicService.class));
 
                 //update UI
@@ -98,10 +88,29 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void validate(String user, String pw){
+
+    //store user-root
+
+    private void storeRoot() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("root", Cell.getText().toString());
+        editor.apply();
+    }
+
+    private String loadRoot(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
+        String root = sharedPreferences.getString("root", "");
+        return root;
+    }
+
+
+    //login validation
+
+    private void validate(String user, String pw) {
 
         //admin login (connection not needed)
-        if ((user.equals("admin")) && (pw.equals("1234"))){
+        if ((user.equals("admin")) && (pw.equals("1234"))) {
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
             startActivity(intent);
         } else {
@@ -124,52 +133,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void register(){
+    public void register(View view) {
         startActivity(new Intent(getApplicationContext(), SignupActivity.class));
-    }
-
-    public void toSettings(View view) {
-        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-    }
-
-    // manage background music
-    // The following methods are in MusicService.class and won't be used here;
-    public void play(){
-        if (player == null){
-            player = MediaPlayer.create(this,R.raw.bgm_dreamy_piano);
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    stopPlayer();
-                }
-            });
-        }
-        player.setLooping(true);
-        player.start();
-    }
-
-    public void pause(){
-        if (player != null){
-            player.pause();
-        }
-    }
-
-    public void stop (View v){
-        stopPlayer();
-    }
-
-    private void stopPlayer(){
-        if (player != null){
-            player.release();
-            player = null;
-            Toast.makeText(this, "MediaPlayer released",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        stopPlayer();
     }
 }

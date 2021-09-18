@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@color/blue_theme"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <RelativeLayout
+        android:id="@+id/frame1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/navbar"
+        android:gravity="center_horizontal"
+
+        android:layout_marginTop="20dp"
+        android:onClick="toVideo1"
+        >
+
+        <TextView
+            android:id="@+id/video1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Video1"
+            android:textColorHint="@color/grey_input"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/description1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video1"
+
+            android:fontFamily="@font/raleway"
+            android:text="Lorem ipsum dolor sit amet, con sectetur adipiscing elit"
+            android:textColor="@color/grey_input"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/frame1"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:id="@+id/video2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Video1"
+            android:textColorHint="@color/grey_input"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/description2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video2"
+
+            android:fontFamily="@font/raleway"
+            android:text="Lorem ipsum dolor sit amet, con sectetur adipiscing elit"
+            android:textColor="@color/grey_input"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tabbar"
+        android:layout_marginBottom="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_up"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_mute"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@color/grey_secondary"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_toStartOf="@+id/therapy"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="toHome"
+            />
+
+        <ImageView
+            android:id="@+id/therapy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/therapy"
+            android:layout_toStartOf="@+id/progress"
+            android:layout_marginEnd="16dp"
+
+            android:onClick="toGMI"
+            />
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/process"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="toProgress"
+            />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:layout_toEndOf="@+id/progress"
+            android:layout_marginStart="22dp"
+            />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings"
+            android:layout_toEndOf="@+id/profile"
+            android:layout_marginStart="24dp"
+
+            android:onClick="toSettings"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,38 +19,28 @@
         android:textSize="27sp" />
 
     <TextView
-        android:id="@+id/infobar_intermed"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/grey_infobar"
-        android:gravity="center"
+        android:id="@+id/intro"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/navbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="45dp"
 
         android:fontFamily="@font/raleway"
-
-        android:text="@string/intermediate"
-        android:textColor="@color/black"
-        android:textSize="24sp"/>
-
-    <TextView
-        android:id="@+id/vprompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:layout_marginTop="122dp"
-        android:layout_marginBottom="122dp"
-        android:fontFamily="@font/raleway_semibold"
-        android:text="Video Prompt"
+        android:text="@string/intermed_video_prompt"
 
         android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="230dp"
         android:layout_height="59dp"
-        android:layout_gravity="center"
 
+        android:layout_below="@+id/intro"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/bg_input"
         android:fontFamily="@font/raleway"
 
@@ -64,32 +54,23 @@
 
         app:cornerRadius="35dp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_return"-->
-<!--        android:layout_width="230dp"-->
-<!--        android:layout_height="59dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="22dp"-->
-<!--        android:layout_marginBottom="37dp"-->
-
-<!--        android:background="@drawable/bg_button"-->
-<!--        android:fontFamily="@font/raleway_semibold"-->
-
-<!--        android:text="@string/ret"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/black"-->
-
-<!--        android:textSize="24sp"-->
-<!--        app:backgroundTint="@color/blue_theme"-->
-<!--        app:cornerRadius="35dp"-->
-
-<!--        android:onClick="ret"-->
-<!--        />-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_above="@+id/tabbar"
+        android:layout_marginBottom="50dp"
+        >
+
+<!--        <ImageView-->
+<!--            android:id="@+id/info"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/info_circle"-->
+
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="70dp"-->
+<!--            android:onClick="toInfo"-->
+<!--            />-->
 
         <ImageView
             android:id="@+id/volume"
@@ -98,7 +79,7 @@
             android:src="@drawable/volume_up"
 
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"
+            android:layout_marginEnd="20dp"
             android:visibility="invisible"
             />
 
@@ -109,17 +90,67 @@
             android:src="@drawable/volume_mute"
 
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@color/grey_secondary"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_toStartOf="@+id/therapy"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="toHome"
+            />
+
+        <ImageView
+            android:id="@+id/therapy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/therapy"
+            android:layout_toStartOf="@+id/progress"
+            android:layout_marginEnd="16dp"
+            />
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/process"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="toProgress"
+            />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:layout_toEndOf="@+id/progress"
+            android:layout_marginStart="22dp"
+
+            android:onClick="toProfile"
             />
 
         <ImageView
             android:id="@+id/setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/gear"
-
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
+            android:src="@drawable/settings"
+            android:layout_toEndOf="@+id/profile"
+            android:layout_marginStart="24dp"
 
             android:onClick="toSettings"
             />
@@ -127,4 +158,5 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+
+</RelativeLayout>

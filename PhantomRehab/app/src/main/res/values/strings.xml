@@ -17,22 +17,26 @@
     <string name="login_error">Invalid administrator username or password</string>
     <string name="level_1">Level 1</string>
     <string name="random_hand">This is a random hand image</string>
-    <string name="left">Left</string>
+    <string name="left">L</string>
+    <string name="right">R</string>
     <string name="next">Next</string>
     <string name="promt_setup">Please set up your device as instructed.</string>
-    <string name="insn"><b>Instruction</b> <br/>
-        <br/>
-        <b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
-        <br/>
-        <b>2.</b> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br/>
-        <br/>
-        <b>3.</b> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
+    <string name="insn"><b>Instruction</b> \n \n
+        \u2022 Place your device vertically against a wall or other stable surface. \n
+        \u2022 When you click on “Begin,” the camera will open. \n
+        \n <b>Important</b>: Please <u>grant this app permission</u> to access the camera, or the app may not function properly.
+        Press the lightbulb button at the bottom of this page if you need help. \n \n
+\u2022 When the camera opens, make sure you can see the non-affected body part entirely, and make sure the affected body part is fully covered and out of view. \n
+        \u2022 Complete <b>at least 20 minutes</b> of mirror imagery a day, <b>every day</b>, until you no longer have any symptoms. \n
+\u2022 Start with simple and basic movements before progressing towards more complex and functional movements, as symptoms allow. \n
+        \u2022 After you finish each days training, return to this app and <b>click on “Done.”</b> Your training will be recorded.
+    </string>
     <string name="cancel"><u>Cancel</u></string>
     <string name="log_out">Sign out</string>
     <string name="meditation">Meditation</string>
     <string name="gmi">GMI</string>
-    <string name="my_progress">My Progress</string>
-    <string name="my_profile">My Profile</string>
+    <string name="my_progress">Progress</string>
+    <string name="my_profile">Profile</string>
     <string name="finish_msg">Congratulations! You\'ve finished.</string>
     <string name="settings">Settings</string>
     <string name="language">Language</string>
@@ -48,10 +52,8 @@
     <string name="frequency">Frequency</string>
     <string name="info_section">Info Section</string>
     <string name="laterality_reconstruction">Laterality Reconstruction</string>
-    <string name="lr_content">Targets neurologic connections between the brain and the missing limb by having you identify body images as either left or right.<br/>
-<br/>
-By practicing this technique, your brain uses its movement planning areas to start normalizing messages between the brain and body.<br/>
-<br/>
+    <string name="lr_content">Targets neurologic connections between the brain and the missing limb by having you identify body images as either left or right.\n \n
+By practicing this technique, your brain uses its movement planning areas to start normalizing messages between the brain and body.\n \n
 Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Try your best to not become frustrated if you are not a pro at this exercise at first. Recovery takes time and is not linear. Go easy on yourself and know that you are working toward progress. :)
 </string>
     <string name="graded_motor_imaging">Graded Motor Imaging</string>
@@ -59,4 +61,40 @@ Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Tr
     </string>
     <string name="done"><b>Done</b></string>
     <string name="enter_cell_number">Enter cell number</string>
+    <string name="set_reminder">Confirm</string>
+    <string name="laterality_training">Laterality Training</string>
+    <string name="laterality_hint">You are recommended to do this training 5 times a day, 5 minutes per time. Set reminders for yourself here :D</string>
+    <string name="select_time">Select time</string>
+    <string name="motor_hint">You are recommended to do this training every day, up to 2 hours. Set a daily reminder here.</string>
+    <string name="motor_imagery">Motor Imagery</string>
+    <string name="mirror_hint">You are recommended to do this training every day, no maximum time limit. Set a daily reminder here.</string>
+    <string name="mirror_therapy">Mirror Therapy</string>
+    <string name="faqs">FAQs</string>
+    <string name="home">Home</string>
+    <string name="therapy">Therapy</string>
+    <string name="no_1">No. 1</string>
+
+    <string name="laterality_intro">In this part, you will … \n \n
+            \u2022 Differentiate between “L” (“Left”) and “R” (“Right”) in under <b>2 seconds</b>. \n \n
+        \u2022 Score at least <b>90%</b> for response time AND accuracy <b>for a week</b> to advance to the next level.</string>
+
+    <string name="intermed_video_prompt">In this part, you will … \n \n
+        \u2022 Watch videos and do guided-training <b>every day, up to 2 hours.</b> \n \n
+        \u2022 Before you begin the training, remember to <b><u>start the stopwatch</u></b> to record your progress. </string>
+
+    <string name="begin">Begin</string>
+    <string name="score">Score: %1$d</string>
+    <string name="time">Time: %1$s</string>
+    <string name="score_placeholder">Score: ?</string>
+    <string name="time_placeholder">Time: ?</string>
+
+    <string name="start_stopwatch">Press "L" or "R" to begin!</string>
+    <string name="start_stopwatch_intermed">Press here to start the stopwatch</string>
+
+    <string name="hide_stopwatch">Keep working!</string>
+    <string name="resume_stopwatch">Press to resume the stopwatch</string>
+    <string name="resume">Resume</string>
+    <string name="save_my_progress"><u>Save my progress</u></string>
+    <string name="verification_prompt">Please enter the following information to verify your identity.</string>
+    <string name="verify">Verify</string>
 </resources>

@@ -15,7 +15,6 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
     private Button Beginner;
     private Button Intermed;
     private Button Hard;
-    private Button Return;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +24,10 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
         Beginner = findViewById(R.id.btn_beginner);
         Intermed = findViewById(R.id.btn_intermed);
         Hard = findViewById(R.id.btn_hard);
-        Return = findViewById(R.id.btn_return);
 
         Beginner.setOnClickListener(this);
         Intermed.setOnClickListener(this);
         Hard.setOnClickListener(this);
-        Return.setOnClickListener(this);
 
         //manage music
         ImageView PlayIcon, MuteIcon;
@@ -67,7 +64,7 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_beginner:
-                startActivity(new Intent(this,BeginnerMain.class));
+                startActivity(new Intent(this,BeginnerIntro.class));
                 break;
             case R.id.btn_intermed:
                 startActivity(new Intent(this,IntermedMain.class));
@@ -75,14 +72,24 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
             case R.id.btn_hard:
                 startActivity(new Intent(this,HardMain.class));
                 break;
-            case R.id.btn_return:
-                startActivity(new Intent(this,HomeActivity.class));
-                break;
         }
+    }
+
+    //tab bar control
+    public void toProfile(View view) {
+        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+    }
+
+    public void toProgress(View view) {
+        startActivity(new Intent(getApplicationContext(),ProgressActivity.class));
     }
 
     public void toSettings(View view) {
         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+    }
+
+    public void toHome(View view) {
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }
 

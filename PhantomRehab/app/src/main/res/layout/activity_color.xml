@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
 
-        android:background="@color/blue_theme"
+        android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+        android:background="?attr/navbar_color"
         android:fontFamily="@font/raleway_semibold"
 
         android:gravity="center"
@@ -19,7 +21,7 @@
         android:textSize="27sp" />
 
     <TextView
-        android:id="@+id/signin"
+        android:id="@+id/ttl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -32,25 +34,64 @@
         android:textColor="@color/black"
         android:textSize="27sp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_return"-->
-<!--        android:layout_width="230dp"-->
-<!--        android:layout_height="59dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="22dp"-->
-<!--        android:layout_marginBottom="37dp"-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        
+        <ImageView
+            android:id="@+id/blue"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@color/blue_theme"
+            android:layout_marginEnd="25dp"
 
-<!--        android:background="@drawable/bg_button"-->
-<!--        android:fontFamily="@font/raleway_semibold"-->
+            android:onClick="changeToBlue"
+            />
 
-<!--        android:text="@string/ret"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/black"-->
+        <ImageView
+            android:id="@+id/teal"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@color/teal_theme"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/blue"
 
-<!--        android:textSize="24sp"-->
-<!--        app:backgroundTint="@color/blue_theme"-->
-<!--        app:cornerRadius="35dp"-->
-<!--        android:onClick="ret"/>-->
+            android:onClick="changeToTeal"
+            />
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/green"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@color/green_theme"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="changeToGreen"
+            />
+
+        <ImageView
+            android:id="@+id/purple"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@color/purple_theme"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@+id/green"
+
+            android:onClick="changeToPurple"
+            />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_marginTop="40dp"
@@ -76,18 +117,6 @@
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="83dp"
-            />
-
-        <ImageView
-            android:id="@+id/setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gear"
-
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
-
-            android:onClick="toSettings"
             />
 
     </RelativeLayout>
