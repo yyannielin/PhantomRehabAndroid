@@ -1,6 +1,7 @@
 package com.example.phantomrehab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity {
 
     EditText Phone, Password;
+    ImageView PlayIcon, MuteIcon;
     TextView tvUsername, tvPhone, tvPassword, tvEmail;
     RelativeLayout Verification, ProfileInfo;
     DatabaseReference reff;
@@ -32,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         //verification
         Phone = findViewById(R.id.phone);
-        Password = findViewById(R.id.pw);
+//        Password = findViewById(R.id.pw);
 
         Verification = findViewById(R.id.verification);
         ProfileInfo = findViewById(R.id.profile_info);
@@ -43,7 +45,6 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.enter_email);
 
         //manage music
-        ImageView PlayIcon, MuteIcon;
         MuteIcon = findViewById(R.id.mute);
         PlayIcon = findViewById(R.id.volume);
 
@@ -71,10 +72,18 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     //verification
-    public void verify(View view) {
-        String phone = Phone.getText().toString().trim();
+    private String loadRoot(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
+        String root = sharedPreferences.getString("root", "");
+        return root;
+    }
 
-        reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone);
+    public void verify(View view) {
+
+        String dbPhone = loadRoot();
+        reff = FirebaseDatabase.getInstance().getReference().child("users").child(dbPhone);
+
+        //retrieve info
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,9 +94,9 @@ public class ProfileActivity extends AppCompatActivity {
                 String dbPassword = snapshot.child("pw").getValue().toString();
 
                 String phone = Phone.getText().toString();
-                String pw = Password.getText().toString();
+//                String pw = Password.getText().toString();
 
-                if (dbPassword.equals(pw)){
+                if (dbPhone.equals(phone)){
 
                     Toast.makeText(ProfileActivity.this, "Identity verified.",Toast.LENGTH_SHORT).show();
 
@@ -96,17 +105,18 @@ public class ProfileActivity extends AppCompatActivity {
 
                     tvUsername.setText(dbName);
                     tvEmail.setText(dbEmail);
-                    tvPassword.setText(pw);
+                    tvPassword.setText(dbPassword);
                     tvPhone.setText(phone);
                 }
                 else {
-                    Password.setError("Cell or password is wrong.");
+                    Phone.setError("Cell is wrong.");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+
     }
 
     //tab bar control

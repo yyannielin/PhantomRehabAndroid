@@ -1,21 +1,31 @@
 package com.example.phantomrehab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProgressActivity  extends AppCompatActivity {
+
+    ImageView PlayIcon, MuteIcon;
+    ProgressBar LatProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
 
+        //display progress
+        LatProgress = findViewById(R.id.progress_bar);
+        int lat_count = loadDayCounter();
+        int lat_prog = lat_count*100/7;
+        LatProgress.setProgress(lat_prog);
+
         //manage music
-        ImageView PlayIcon, MuteIcon;
         MuteIcon = findViewById(R.id.mute);
         PlayIcon = findViewById(R.id.volume);
 
@@ -41,6 +51,18 @@ public class ProgressActivity  extends AppCompatActivity {
             }
         });
     }
+
+
+    //progress control
+
+    private int loadDayCounter() {
+        SharedPreferences sharedPreferences = getSharedPreferences("DayCounter", MODE_PRIVATE);
+        int count = sharedPreferences.getInt("day_counter", 1);
+        return count;
+    }
+
+
+    //tab bar control
 
     public void toProfile(View view) {
         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));

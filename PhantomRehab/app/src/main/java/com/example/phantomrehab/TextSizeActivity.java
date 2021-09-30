@@ -4,15 +4,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class TextSizeActivity extends AppCompatActivity {
 
+    TextView textSize, navbar;
+    SeekBar seekBar;
+    int seekValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_textsize);
+
+        textSize = findViewById(R.id.title);
+        navbar = findViewById(R.id.navbar);
+        seekBar = findViewById(R.id.seek_bar);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekValue = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                textSize.setTextSize(seekValue);
+                navbar.setTextSize(seekValue);
+            }
+        });
+
 
         //manage music
         ImageView PlayIcon, MuteIcon;

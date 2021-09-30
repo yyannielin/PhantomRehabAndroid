@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText Username, Password, Cell;
     private Button Login;
-    private TextView LoginError;
 
     private FirebaseAuth fAuth;
 
@@ -39,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         Cell = (EditText) findViewById(R.id.enter_phone);
         Password = (EditText) findViewById(R.id.enter_pw);
         Login = (Button) findViewById(R.id.btn_login);
-        LoginError = (TextView) findViewById(R.id.login_error);
-        LoginError.setText("");
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -101,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
     private String loadRoot(){
         SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
         String root = sharedPreferences.getString("root", "");
+
+//        Toast.makeText(getApplicationContext(), "root is"+root,
+//                Toast.LENGTH_SHORT).show();
+
         return root;
     }
 
@@ -126,11 +127,12 @@ public class MainActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(MainActivity.this, "Login failed. " + task.getException().getMessage(),
                                         Toast.LENGTH_LONG).show();
-//                                LoginError.setText(R.string.login_error);
                             }
                         }
                     });
         }
+
+        storeRoot();
     }
 
     public void register(View view) {

@@ -34,6 +34,44 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
+    <RelativeLayout
+        android:id="@+id/timer_control"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/intro"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
+        >
+
+        <ImageView
+            android:id="@+id/selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selected"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/deselected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/deselected"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/selected"
+            android:layout_marginStart="10sp"
+
+            android:text="Show stopwatch"
+            android:fontFamily="@font/raleway_semibold"
+            android:textSize="20sp"
+            />
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/btn_begin"
         android:layout_width="230dp"
@@ -41,7 +79,7 @@
         android:layout_gravity="center"
 
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/intro"
+        android:layout_below="@+id/timer_control"
 
         android:layout_marginBottom="35dp"
         android:background="@drawable/bg_input"
@@ -125,7 +163,7 @@
             android:id="@+id/therapy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/therapy"
+            android:src="@drawable/therapy_fill"
             android:layout_toStartOf="@+id/progress"
             android:layout_marginEnd="16dp"
             />

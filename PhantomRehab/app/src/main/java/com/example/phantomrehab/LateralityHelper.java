@@ -4,12 +4,14 @@ public class LateralityHelper {
 
     String time;
     int score;
+    int POF;
 
     public LateralityHelper() {}
 
-    public LateralityHelper(String time, int score) {
+    public LateralityHelper(String time, int score, int POF) {
         this.time = time;
         this.score = score;
+        this.POF = POF;
     }
 
     public String getTime() {
@@ -19,4 +21,9 @@ public class LateralityHelper {
     public int getScore() {
         return score;
     }
+
+    public int getPOF() {
+        return POF;
+    }
+
 }
