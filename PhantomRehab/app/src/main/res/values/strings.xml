@@ -79,8 +79,12 @@ Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Tr
         \u2022 Score at least <b>90%</b> for response time AND accuracy <b>for a week</b> to advance to the next level.</string>
 
     <string name="intermed_video_prompt">In this part, you will … \n \n
-        \u2022 Watch videos and do guided-training <b>every day, up to 2 hours.</b> \n \n
-        \u2022 Before you begin the training, remember to <b><u>start the stopwatch</u></b> to record your progress. </string>
+        \u2022 Watch videos and do guided-training <b>every day, up to 2 hours.</b> You can do this training in more than one sitting. \n \n
+        \u2022 Each time before you begin the training, remember to <b><u>start the stopwatch</u></b> to record your progress. \n \n
+        \u2022 Remember to click on <b><u>"Save my progress"</u></b> when you plan to leave. \n \n
+        \u2022 <u>Please do not click on the button when you are still in the middle of a training session, and only click on the button once when saving your progress,
+            or there might be an error in calculating your total progress.</u>
+    </string>
 
     <string name="begin">Begin</string>
     <string name="score">Score: %1$d</string>

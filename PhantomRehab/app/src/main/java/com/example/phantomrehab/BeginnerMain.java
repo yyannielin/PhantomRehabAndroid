@@ -239,8 +239,8 @@ public class BeginnerMain extends AppCompatActivity {
 
         int count = loadDayCounter();
 
-        Toast.makeText(getApplicationContext(),"day count:" + count,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"day count:" + count,
+//                Toast.LENGTH_SHORT).show();
 
         if (count >= 7){
 

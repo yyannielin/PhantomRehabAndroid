@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:id="@+id/scrollview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -40,6 +48,8 @@
         android:layout_height="59dp"
 
         android:layout_below="@+id/intro"
+        android:layout_marginBottom="30dp"
+
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_input"
         android:fontFamily="@font/raleway"
@@ -57,7 +67,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tabbar"
+        android:layout_below="@+id/navbar"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="50dp"
         >
 
@@ -76,7 +87,7 @@
             android:id="@+id/volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_up"
+            android:src="@drawable/volume_float"
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
@@ -87,7 +98,7 @@
             android:id="@+id/mute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_mute"
+            android:src="@drawable/volume_float_mute"
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
@@ -95,68 +106,69 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/tabbar"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center_vertical"
-        android:background="@color/grey_secondary"
-        android:layout_alignParentBottom="true" >
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/tabbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:background="@color/grey_secondary"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        >-->
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home"
-            android:layout_toStartOf="@+id/therapy"
-            android:layout_marginEnd="25dp"
+<!--        <ImageView-->
+<!--            android:id="@+id/home"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/home"-->
+<!--            android:layout_toStartOf="@+id/therapy"-->
+<!--            android:layout_marginEnd="25dp"-->
 
-            android:onClick="toHome"
-            />
+<!--            android:onClick="toHome"-->
+<!--            />-->
 
-        <ImageView
-            android:id="@+id/therapy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/therapy"
-            android:layout_toStartOf="@+id/progress"
-            android:layout_marginEnd="16dp"
-            />
+<!--        <ImageView-->
+<!--            android:id="@+id/therapy"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/therapy"-->
+<!--            android:layout_toStartOf="@+id/progress"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            />-->
 
-        <ImageView
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/process"
-            android:layout_centerHorizontal="true"
+<!--        <ImageView-->
+<!--            android:id="@+id/progress"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/process"-->
+<!--            android:layout_centerHorizontal="true"-->
 
-            android:onClick="toProgress"
-            />
+<!--            android:onClick="toProgress"-->
+<!--            />-->
 
-        <ImageView
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/profile"
-            android:layout_toEndOf="@+id/progress"
-            android:layout_marginStart="22dp"
+<!--        <ImageView-->
+<!--            android:id="@+id/profile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/profile"-->
+<!--            android:layout_toEndOf="@+id/progress"-->
+<!--            android:layout_marginStart="22dp"-->
 
-            android:onClick="toProfile"
-            />
+<!--            android:onClick="toProfile"-->
+<!--            />-->
 
-        <ImageView
-            android:id="@+id/setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/settings"
-            android:layout_toEndOf="@+id/profile"
-            android:layout_marginStart="24dp"
+<!--        <ImageView-->
+<!--            android:id="@+id/setting"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/settings"-->
+<!--            android:layout_toEndOf="@+id/profile"-->
+<!--            android:layout_marginStart="24dp"-->
 
-            android:onClick="toSettings"
-            />
+<!--            android:onClick="toSettings"-->
+<!--            />-->
 
-    </RelativeLayout>
-
-
+<!--    </RelativeLayout>-->
 
 </RelativeLayout>
+
+</ScrollView>

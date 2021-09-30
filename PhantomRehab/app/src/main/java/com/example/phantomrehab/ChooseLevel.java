@@ -61,14 +61,8 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 //retrieve info from database and update UI based on the user's current level
-                if (snapshot.child("MirThresh").exists()){
-                    String dbLat = snapshot.child("MirThresh").getValue().toString();
-
-                    //update UI
-                }
-
-                else if (snapshot.child("MotThresh").exists()){
-                    String dbLat = snapshot.child("MotThresh").getValue().toString();
+                if (snapshot.child("Motor Imagery/MotThresh").exists()){
+                    String dbLat = snapshot.child("Motor Imagery/MotThresh").getValue().toString();
 
                     //update UI
                     IntermedLock.setVisibility(View.INVISIBLE);

@@ -32,6 +32,10 @@ public class HardMain extends AppCompatActivity {
 
     private Button Next;
 
+    //level management
+
+    private String today;
+
     //database management
 
     DatabaseReference reff;
@@ -48,6 +52,9 @@ public class HardMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hard);
+
+        //level control
+        today = getToday();
 
         //stopwatch control
         chronometer = findViewById(R.id.chronometer);
@@ -116,11 +123,20 @@ public class HardMain extends AppCompatActivity {
         });
     }
 
+
+    //master control
     public void done(View view) {
         saveData();
         startActivity(new Intent(getApplicationContext(), HardFinish.class));
     }
 
+
+    //level control
+    private String getToday() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(calendar.getTime());
+    }
 
     //database management
     public void saveProgress(View view) {
