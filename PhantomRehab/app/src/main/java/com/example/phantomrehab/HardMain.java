@@ -15,13 +15,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -35,10 +39,12 @@ public class HardMain extends AppCompatActivity {
     //level management
 
     private String today;
+    private boolean pass;
 
     //database management
 
     DatabaseReference reff;
+    private String phone;
 
     //stopwatch control
 
@@ -55,6 +61,11 @@ public class HardMain extends AppCompatActivity {
 
         //level control
         today = getToday();
+
+        //database control
+        phone = loadRoot();
+        reff = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(phone).child("Mirror Therapy");
 
         //stopwatch control
         chronometer = findViewById(R.id.chronometer);
@@ -126,16 +137,110 @@ public class HardMain extends AppCompatActivity {
 
     //master control
     public void done(View view) {
-        saveData();
+
+//        saveData();
+
+        totalTime();
+
+        nextLevel();
+
         startActivity(new Intent(getApplicationContext(), HardFinish.class));
     }
 
 
     //level control
+
+    private void nextLevel() {
+
+        //int day_count = loadDayCount();
+        //if total_time > 2h -> day_count +=1, storeDayCount()
+        //if day_count == 14 -> add MotThresh = 1 to database
+
+        int count = loadMirDayCounter();
+
+        Toast.makeText(getApplicationContext(),"new day count:" + count,
+                Toast.LENGTH_SHORT).show();
+
+        if (count == 14){
+
+            //load user root and database
+            reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone)
+                    .child("Mirror Therapy");
+
+            Map<String, Object> threshUpdates = new HashMap<>();
+            threshUpdates.put("MirThresh", 1);
+
+            reff.updateChildren(threshUpdates);
+        }
+    }
+
+    private void saveMirDayCounter(int day_counter) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MirDayCounter", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("mir_day_counter",day_counter);
+        editor.apply();
+    }
+
+    private int loadMirDayCounter() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MirDayCounter", MODE_PRIVATE);
+        int count = sharedPreferences.getInt("mir_day_counter", 0);
+        return count;
+    }
+
     private String getToday() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(calendar.getTime());
+    }
+
+    private void totalTime() {
+        //access database -> reff = child(today)
+        //total_time = 0
+        //for each child -> get value t, total_time +=t
+
+        final int[] total_time = {0};
+
+        //load database
+        reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone)
+                .child("Mirror Therapy");
+        reff.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(today).exists()){
+
+                    for (DataSnapshot dataSnapshot : snapshot.child(today).getChildren()){
+//                        total_time[0] += (int) dataSnapshot.getValue();
+                        int i = Integer.parseInt(dataSnapshot.getValue().toString());
+                        total_time[0] += i;
+                    }
+
+                    //20 min * 60 * 1000
+                    if (total_time[0] >= 20 * 60 * 1000) {
+                        pass = true;
+                    }
+                    else {
+                        pass = false;
+                    }
+
+                    dayCounter(pass);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    private void dayCounter(boolean pass) {
+        int day_count = loadMirDayCounter();
+
+        if (pass) {
+            day_count += 1;
+            saveMirDayCounter(day_count);
+
+        }
     }
 
     //database management
@@ -145,25 +250,43 @@ public class HardMain extends AppCompatActivity {
 
     private void saveData() {
         String chronoText = chronometer.getText().toString();
+        long chrono_val = parseChrono(chronoText);
 
         //load user root and database
-        String phone = loadRoot();
-        reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone);
+        reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone)
+                .child("Motor Imagery").child(today);
 
-        //get current date
+        //get current time
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'at' h:mm a");
         String date = dateFormat.format(calendar.getTime());
 
         //store val in database
-        reff = reff.child("Mirror Therapy");
         Map<String, Object> userUpdates = new HashMap<>();
-        userUpdates.put(date, chronoText);
+        userUpdates.put(date, chrono_val);
 
         reff.updateChildren(userUpdates);
 
         Toast.makeText(getApplicationContext(), "Your data is saved.",
                 Toast.LENGTH_SHORT).show();
+    }
+
+    private long parseChrono(String chronoText) {
+
+        //parse chronoText (unit: millisecond)
+        long t = 0;
+        String array[] = chronoText.split(":");
+
+        if (array.length == 2) {
+            t = Integer.parseInt(array[0]) * 60 * 1000
+                    + Integer.parseInt(array[1]) * 1000;
+        } else if (array.length == 3) {
+            t = Integer.parseInt(array[0]) * 60 * 60 * 1000
+                    + Integer.parseInt(array[1]) * 60 * 1000
+                    + Integer.parseInt(array[2]) * 1000;
+        }
+
+        return t;
     }
 
     private String loadRoot(){
