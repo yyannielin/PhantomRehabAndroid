@@ -107,10 +107,19 @@ public class ProfileActivity extends AppCompatActivity {
                     tvEmail.setText(dbEmail);
                     tvPassword.setText(dbPassword);
                     tvPhone.setText(phone);
+
+                    //store info in shared_preference in case user wants to edit info
+
+                    storeProfile_user(dbName);
+                    storeProfile_email(dbEmail);
+                    storeProfile_pw(dbPassword);
+
                 }
+
                 else {
                     Phone.setError("Cell is wrong.");
                 }
+
             }
 
             @Override
@@ -122,6 +131,50 @@ public class ProfileActivity extends AppCompatActivity {
     //edit info
     public void edit(View view) {
         startActivity(new Intent(getApplicationContext(), EditProfile.class));
+    }
+
+    //store user-profile
+
+    private void storeProfile_user(String user) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("user", user);
+
+//        Toast.makeText(getApplicationContext(), "user_stored", Toast.LENGTH_SHORT).show();
+
+        editor.apply();
+    }
+
+    private void storeProfile_email(String email) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.apply();
+    }
+
+    private void storeProfile_pw(String pw) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("pw", pw);
+        editor.apply();
+    }
+
+    private String loadProfile_user(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        String s = sharedPreferences.getString("user", "");
+        return s;
+    }
+
+    private String loadProfile_email(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        String s = sharedPreferences.getString("email", "");
+        return s;
+    }
+
+    private String loadProfile_pw(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        String s = sharedPreferences.getString("pw", "");
+        return s;
     }
 
     //tab bar control

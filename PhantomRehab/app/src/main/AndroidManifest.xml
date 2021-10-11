@@ -41,7 +41,9 @@
 
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".EditProfile"/>
+
         <activity android:name=".ProgressActivity"/>
+
         <activity android:name=".ChooseLevel"/>
 
         <activity android:name=".BeginnerIntro"/>

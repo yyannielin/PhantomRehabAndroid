@@ -1,5 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:background="@color/blue_theme"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/title_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/navbar"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="34dp"
+        android:layout_centerHorizontal="true"
+
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/my_profile"
+
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+
+    <RelativeLayout
+        android:id="@+id/profile_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_profile"
+        android:layout_centerHorizontal="true"
+        >
+
+        <EditText
+            android:id="@+id/enter_username"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+
+            android:drawableStart="@drawable/person_circle"
+            android:drawablePadding="30dp"
+            android:ems="10"
+
+            android:fontFamily="@font/raleway"
+            android:text=""
+            android:hint="@string/enter_username"
+
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/enter_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_username"
+            android:layout_marginBottom="15dp"
+            android:drawableStart="@drawable/envelope"
+
+            android:drawablePadding="30dp"
+            android:ems="10"
+            android:fontFamily="@font/raleway"
+            android:text=""
+            android:hint="@string/enter_email"
+
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/enter_pw"
+            android:layout_width="300dp"
+            android:layout_height="59dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_email"
+            android:layout_marginBottom="30dp"
+
+            android:drawableStart="@drawable/lock"
+            android:drawablePadding="30dp"
+            android:ems="10"
+            android:fontFamily="@font/raleway"
+            android:text=""
+            android:hint="@string/enter_password"
+
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+
+            android:paddingBottom="14dp"
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_pw"
+
+            android:background="@drawable/bg_button"
+
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+
+            app:backgroundTint="@color/blue_tertiary"
+            app:cornerRadius="35dp"
+
+            android:onClick="save"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tabbar"
+        android:layout_marginBottom="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_float_mute"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/volume_float"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@color/grey_secondary"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_toStartOf="@+id/therapy"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="toHome"
+            />
+
+        <ImageView
+            android:id="@+id/therapy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/therapy"
+            android:layout_toStartOf="@+id/progress"
+            android:layout_marginEnd="16dp"
+
+            android:onClick="toGMI"
+            />
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/process"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="toProgress"
+            />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_fill"
+            android:layout_toEndOf="@+id/progress"
+            android:layout_marginStart="22dp"
+            />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings"
+            android:layout_toEndOf="@+id/profile"
+            android:layout_marginStart="24dp"
+
+            android:onClick="toSettings"
+            />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
