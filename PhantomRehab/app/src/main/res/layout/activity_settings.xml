@@ -120,6 +120,31 @@
             android:onClick="toTextSize"
             />
 
+        <Button
+            android:id="@+id/sign_out"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_centerHorizontal="true"
+
+            android:layout_marginBottom="35dp"
+            android:layout_below="@+id/btn_text"
+
+            android:background="@drawable/bg_input"
+            android:fontFamily="@font/raleway_semibold"
+
+            android:includeFontPadding="false"
+
+            android:text="@string/log_out"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:letterSpacing="0.02"
+
+            app:backgroundTint="@color/blue_tertiary"
+            app:cornerRadius="35dp"
+            android:onClick="logout"
+            />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

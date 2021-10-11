@@ -119,6 +119,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    //edit info
+    public void edit(View view) {
+        startActivity(new Intent(getApplicationContext(), EditProfile.class));
+    }
+
     //tab bar control
     public void toProfile(View view) {
         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));

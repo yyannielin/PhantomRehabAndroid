@@ -19,64 +19,432 @@
             android:fontFamily="@font/raleway_semibold"
 
             android:gravity="center"
-            android:text="@string/app_name"
+            android:text="@string/faqs"
             android:textColor="@color/black"
             android:textSize="27sp" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
 
-            android:layout_centerHorizontal="true"
+        <RelativeLayout
+            android:id="@+id/faq1_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/navbar"
+            android:gravity="center_horizontal"
+            >
 
-            android:text="@string/faqs"
-            android:textSize="27sp"
-            android:fontFamily="@font/raleway_semibold"
-            android:gravity="center"
-            />
+            <TextView
+                android:id="@+id/q1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/q1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway_semibold"
+
+                android:gravity="center_vertical"
+
+                android:text="@string/faq_q1"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/down1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_down"
+
+                android:layout_toEndOf="@+id/q1"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                />
+
+            <TextView
+
+                android:visibility="gone"
+
+                android:id="@+id/f1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/q1"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway"
+
+                android:layout_marginBottom="20dp"
+                android:text="@string/faq_a1"
+
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+
+                android:visibility="gone"
+
+                android:id="@+id/up1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_up"
+
+                android:layout_toEndOf="@+id/f1"
+                android:layout_below="@+id/f1"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="-25dp"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/faq2_expand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/faq1_expand"
+            android:gravity="center_horizontal"
+            >
 
-            android:layout_below="@+id/title"
+            <TextView
+                android:id="@+id/q2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
 
-            android:background="@color/white"
-            android:fontFamily="@font/raleway_semibold"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
 
-            android:gravity="center_vertical"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:text="Q: What is the purpose and benefit of using PhantomRehab?
-"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
+                android:background="@color/white"
+                android:fontFamily="@font/raleway_semibold"
 
-        <TextView
-            android:id="@+id/f1"
+                android:gravity="center_vertical"
+
+                android:text="@string/faq_q2"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/down2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_down"
+
+                android:layout_toEndOf="@+id/q2"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                />
+
+            <TextView
+
+                android:visibility="gone"
+
+                android:id="@+id/f2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/q2"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway"
+
+                android:layout_marginBottom="20dp"
+                android:text="@string/faq_a2"
+
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+
+                android:visibility="gone"
+
+                android:id="@+id/up2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_up"
+
+                android:layout_toEndOf="@+id/f2"
+                android:layout_below="@+id/f2"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="-25dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/faq3_expand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/faq2_expand"
+            android:gravity="center_horizontal"
+            >
 
-            android:layout_below="@+id/q1"
+            <TextView
+                android:id="@+id/q3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
 
-            android:background="@color/white"
-            android:fontFamily="@font/raleway"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
 
-            android:gravity="center_vertical"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="A: This app provides patients with easy to follow instructions on how to use a technique known as Graded Motor Imagery. Graded Motor Imagery is a 3-step process that uses evidence-based research to prime the central nervous system for maximal neuroplasticity, allowing the user to effectively rewire their brain to reduce their unwanted symptoms. The first step in the process is Laterality. This requires the user to identify between a L and a R body part while being timed for efficiency and accuracy. Once this level is mastered, the user can proceed to the next step: Imagined Movements. In this stage, the user is prompted to imagine themselves moving the affected body part in a pain-free way. The movements will start out simple and get progressively more complex as the user is ready to progress. If the user has mastered laterality but finds imagined movements to be painful or symptomatic, there are videos of others doing these movements that can be watched until the user is able to imagine themselves moving without issue. Once the Imagined Movements level has been mastered, the user progresses to the final stage of GMI: Mirror Therapy. In this level, the user employs the camera on their phone to act as a mirror, reflecting the unaffected limb in a way that makes the user feel it’s actually the affected limb. This stage utilizes cells in the brain known as mirror neurons which allow us to essentially trick our brain into thinking the projected image is really our own. Voluntary movements and various sensations are introduced to the non-affected body part, making it appear that these things are happening to both limbs. Once this final level is mastered, the user should be able to move their body in any way they want to without experiencing any of their previous symptoms.
-"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+                android:background="@color/white"
+                android:fontFamily="@font/raleway_semibold"
+
+                android:gravity="center_vertical"
+
+                android:text="@string/faq_q3"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/down3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_down"
+
+                android:layout_toEndOf="@+id/q3"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                />
+
+            <TextView
+
+                android:visibility="gone"
+
+                android:id="@+id/f3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/q3"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway"
+
+                android:layout_marginBottom="20dp"
+                android:text="@string/faq_a3"
+
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+
+                android:visibility="gone"
+
+                android:id="@+id/up3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_up"
+
+                android:layout_toEndOf="@+id/f3"
+                android:layout_below="@+id/f3"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="-25dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/faq4_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/faq3_expand"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/q4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway_semibold"
+
+                android:gravity="center_vertical"
+
+                android:text="@string/faq_q4"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/down4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_down"
+
+                android:layout_toEndOf="@+id/q4"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                />
+
+            <TextView
+
+                android:visibility="gone"
+
+                android:id="@+id/f4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/q4"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway"
+
+                android:layout_marginBottom="20dp"
+                android:text="@string/faq_a4"
+
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+
+                android:visibility="gone"
+
+                android:id="@+id/up4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_up"
+
+                android:layout_toEndOf="@+id/f4"
+                android:layout_below="@+id/f4"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="-25dp"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/faq5_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/faq4_expand"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                android:id="@+id/q5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway_semibold"
+
+                android:gravity="center_vertical"
+
+                android:text="@string/faq_q5"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/down5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_down"
+
+                android:layout_toEndOf="@+id/q5"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                />
+
+            <TextView
+
+                android:visibility="gone"
+                android:autoLink="web"
+                android:textColorLink="@color/blue_theme"
+
+                android:id="@+id/f5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/q5"
+
+                android:background="@color/white"
+                android:fontFamily="@font/raleway"
+
+                android:layout_marginBottom="20dp"
+                android:text="@string/faq_a5"
+
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+
+                android:visibility="gone"
+
+                android:id="@+id/up5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/caret_up"
+
+                android:layout_toEndOf="@+id/f5"
+                android:layout_below="@+id/f5"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="-25dp"
+                />
+
+        </RelativeLayout>
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/tabbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:background="@color/grey_secondary"-->
+<!--            android:layout_alignParentBottom="true" >-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/home"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/home_fill"-->
+<!--                android:layout_toStartOf="@+id/therapy"-->
+<!--                android:layout_marginEnd="25dp"-->
+
+<!--                android:onClick="toHome"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/therapy"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/therapy"-->
+<!--                android:layout_toStartOf="@+id/progress"-->
+<!--                android:layout_marginEnd="16dp"-->
+
+<!--                android:onClick="toGMI"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/progress"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/process"-->
+<!--                android:layout_centerHorizontal="true"-->
+
+<!--                android:onClick="toProgress"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/profile"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/profile"-->
+<!--                android:layout_toEndOf="@+id/progress"-->
+<!--                android:layout_marginStart="22dp"-->
+
+<!--                android:onClick="toProfile"-->
+<!--                />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/setting"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/settings"-->
+<!--                android:layout_toEndOf="@+id/profile"-->
+<!--                android:layout_marginStart="24dp"-->
+
+<!--                android:onClick="toSettings"-->
+<!--                />-->
+
+<!--        </RelativeLayout>-->
 
     </RelativeLayout>
 

@@ -55,6 +55,9 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), TextSizeActivity.class));
     }
 
+    public void logout(View view) {
+    }
+
     //tab bar control
     public void toProfile(View view) {
         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));

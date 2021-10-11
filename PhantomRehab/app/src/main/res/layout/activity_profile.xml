@@ -78,28 +78,6 @@
             android:textColorHint="@color/grey_input"
             android:textSize="22sp" />
 
-<!--        <EditText-->
-<!--            android:id="@+id/pw"-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="59dp"-->
-
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_below="@+id/phone"-->
-<!--            android:layout_marginBottom="50dp"-->
-<!--            android:background="@drawable/bg_input"-->
-
-<!--            android:ems="10"-->
-<!--            android:fontFamily="@font/raleway"-->
-<!--            android:hint="@string/enter_password"-->
-
-<!--            android:inputType="textPassword"-->
-<!--            android:paddingStart="26dp"-->
-<!--            android:paddingTop="14dp"-->
-
-<!--            android:paddingBottom="14dp"-->
-<!--            android:textColorHint="@color/grey_input"-->
-<!--            android:textSize="22sp" />-->
-
         <Button
             android:id="@+id/btn_verify"
             android:layout_width="230dp"
@@ -130,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_profile"
         android:layout_centerHorizontal="true"
-        android:visibility="invisible"
+        android:visibility="gone"
         >
 
     <TextView
@@ -203,7 +181,7 @@
 
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/enter_email"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="30dp"
 
         android:drawableStart="@drawable/lock"
         android:drawablePadding="30dp"
@@ -217,6 +195,27 @@
         android:paddingBottom="14dp"
         android:textColorHint="@color/grey_input"
         android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_pw"
+
+            android:background="@drawable/bg_button"
+
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/edit"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+
+            android:onClick="edit"
+            />
 
     </RelativeLayout>
 
@@ -232,7 +231,7 @@
             android:id="@+id/volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_up"
+            android:src="@drawable/volume_float_mute"
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
@@ -243,7 +242,7 @@
             android:id="@+id/mute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_mute"
+            android:src="@drawable/volume_float"
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"

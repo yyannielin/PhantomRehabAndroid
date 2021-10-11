@@ -254,7 +254,7 @@ public class HardMain extends AppCompatActivity {
 
         //load user root and database
         reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone)
-                .child("Motor Imagery").child(today);
+                .child("Mirror Imagery").child(today);
 
         //get current time
         Calendar calendar = Calendar.getInstance();
