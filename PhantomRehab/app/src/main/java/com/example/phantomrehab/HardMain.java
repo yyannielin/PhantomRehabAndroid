@@ -126,7 +126,16 @@ public class HardMain extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE));
+
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_DENIED){
+                    ActivityCompat.requestPermissions(HardMain.this, new String[] {Manifest.permission.CAMERA}, 100);
+                }
+
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_DENIED){
+                    startActivity(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE));
+                }
 
                 //stop background music
                 stopService(new Intent(getApplicationContext(), MusicService.class));

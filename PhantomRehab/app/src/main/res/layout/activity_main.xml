@@ -142,8 +142,6 @@
         android:textColor="@color/blue_link"
         android:textColorLink="@color/blue_link"
         android:textSize="20sp"
-
-        android:onClick="register"
         />
 
     <RelativeLayout

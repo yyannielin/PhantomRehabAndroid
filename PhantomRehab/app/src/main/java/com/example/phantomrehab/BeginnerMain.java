@@ -225,8 +225,20 @@ public class BeginnerMain extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent start = new Intent(getApplicationContext(), BeginnerFinish.class);
+
+                Intent start = new Intent(getApplicationContext(), BeginnerPass.class);
                 startActivity(start);
+
+//                if (POF == 1){
+//                    //to BeginnerPass
+//                    Intent start = new Intent(getApplicationContext(), BeginnerPass.class);
+//                    startActivity(start);
+//                }
+//                else {
+//                    //to BeginnerFail
+//                    Intent start = new Intent(getApplicationContext(), BeginnerFail.class);
+//                    startActivity(start);
+//                }
             }
         }, 3000);
     }
@@ -326,7 +338,6 @@ public class BeginnerMain extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
-
     }
 
     private void saveDayCounter(int day_counter) {

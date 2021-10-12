@@ -3,6 +3,7 @@ package com.example.phantomrehab;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +49,13 @@ public class EditProfile extends AppCompatActivity {
 
 
     //save new profile info
+
+    private String loadRoot(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
+        String root = sharedPreferences.getString("root", "");
+        return root;
+    }
+
     public void save(View view) {
 
         //initialize database
@@ -55,25 +63,56 @@ public class EditProfile extends AppCompatActivity {
         reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone);
 
         //retrieve info entered by user
-        user.getText();
-        email.getText();
-        pw.getText();
+        String s1 = user.getText().toString();
+        String s2 = email.getText().toString();
+        String s3 = pw.getText().toString();
 
-        //store info in database
-//        Map<String, Object> userUpdates = new HashMap<>();
-//        userUpdates.put(date, chrono_val);
-//
-//        reff.updateChildren(userUpdates);
-//
-//        Toast.makeText(getApplicationContext(), "Your profile information is updated.",
-//                Toast.LENGTH_SHORT).show();
+        //verify new info is valid
+        boolean v = valid(s1,s2,s3);
 
+        if (v){
+
+            //store info in database
+            Map<String, Object> userUpdates = new HashMap<>();
+            UserHelper helper = new UserHelper(s1, s2, s3, phone);
+
+            userUpdates.put("User Information", helper);
+
+            reff.updateChildren(userUpdates);
+
+//            Toast.makeText(getApplicationContext(), "Valid entry", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(getApplicationContext(), "Your profile information has been updated.",
+                    Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(getApplicationContext(), ShowProfile.class));
+        }
     }
 
-    private String loadRoot(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
-        String root = sharedPreferences.getString("root", "");
-        return root;
+    private boolean valid(String s1, String s2, String s3) {
+
+        if (TextUtils.isEmpty(s1)){
+            user.setError("Username is required.");
+            return false;
+        }
+
+        if (TextUtils.isEmpty(s2)){
+            email.setError("Email is required.");
+            return false;
+        }
+
+        if (TextUtils.isEmpty(s3)){
+            pw.setError("Password is required.");
+            return false;
+        }
+
+        if (s3.length() < 6){
+            pw.setError("Password must be at least 6 characters.");
+            return false;
+        }
+
+        return true;
+
     }
 
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/summary"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="20dp"
+
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/summary"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        />
+
+    <TextView
+        android:id="@+id/accuracy"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/accuracy"
+        android:textColor="@color/green_pass"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/avg_time"
+        android:textColor="@color/green_pass"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/you_ve_passed"
+        android:textColor="@color/green_pass"
+        android:textSize="24sp"
+        />
+
+    <TextView
+        android:id="@+id/day_count"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:fontFamily="@font/raleway_semibold"
+
+        android:gravity="center"
+        android:text="@string/day_count"
+        android:textColor="@color/blue_shade"
+        android:textSize="24sp"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="230dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="37dp"
+
+        android:background="@drawable/bg_button"
+        android:fontFamily="@font/raleway_semibold"
+
+        android:text="@string/ret"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+
+        android:textSize="24sp"
+        app:backgroundTint="@color/blue_tertiary"
+        app:cornerRadius="35dp"
+        android:onClick="next"
+        />
+
+</LinearLayout>

@@ -36,7 +36,7 @@
         android:textSize="27sp" />
 
     <RelativeLayout
-        android:id="@+id/verification"
+        android:id="@+id/profile_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_profile"
@@ -44,62 +44,113 @@
         >
 
         <TextView
-            android:id="@+id/verification_prompt"
+            android:id="@+id/enter_username"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="35dp"
+
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
 
-            android:textSize="22sp"
-            android:fontFamily="@font/raleway"
-            android:text="@string/verification_prompt"
-            android:paddingStart="10dp"
-            />
-
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="300dp"
-            android:layout_height="59dp"
-            android:layout_gravity="center"
-            android:layout_below="@+id/verification_prompt"
-
-            android:layout_marginBottom="35dp"
-
-            android:background="@drawable/bg_input"
-
+            android:drawableStart="@drawable/person_circle"
+            android:drawablePadding="30dp"
             android:ems="10"
 
             android:fontFamily="@font/raleway"
-            android:hint="@string/enter_cell_number"
-            android:inputType="phone"
+            android:text="@string/enter_username"
             android:paddingStart="26dp"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
             android:textColorHint="@color/grey_input"
             android:textSize="22sp" />
 
+        <TextView
+            android:id="@+id/enter_phone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_username"
+            android:layout_marginBottom="15dp"
+
+            android:drawableStart="@drawable/telephone"
+            android:drawablePadding="30dp"
+            android:ems="10"
+
+            android:fontFamily="@font/raleway"
+            android:text="@string/enter_cell_number"
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/enter_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_phone"
+            android:layout_marginBottom="15dp"
+            android:drawableStart="@drawable/envelope"
+
+            android:drawablePadding="30dp"
+            android:ems="10"
+            android:fontFamily="@font/raleway"
+            android:text="@string/enter_email"
+
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/enter_pw"
+            android:layout_width="300dp"
+            android:layout_height="59dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_email"
+            android:layout_marginBottom="30dp"
+
+            android:drawableStart="@drawable/lock"
+            android:drawablePadding="30dp"
+            android:ems="10"
+            android:fontFamily="@font/raleway"
+            android:text="@string/enter_password"
+
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+
+            android:paddingBottom="14dp"
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
         <Button
-            android:id="@+id/btn_verify"
+            android:id="@+id/edit"
             android:layout_width="230dp"
             android:layout_height="59dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/phone"
+            android:layout_below="@+id/enter_pw"
 
             android:background="@drawable/bg_button"
 
             android:fontFamily="@font/raleway_semibold"
-            android:text="@string/verify"
+            android:text="@string/edit"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="24sp"
 
-            app:backgroundTint="@color/blue_tertiary"
+            app:backgroundTint="@color/grey_secondary"
             app:cornerRadius="35dp"
 
-            android:onClick="verify"
+            android:onClick="edit"
             />
 
     </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"

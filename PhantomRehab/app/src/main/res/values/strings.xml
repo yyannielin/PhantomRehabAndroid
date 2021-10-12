@@ -21,11 +21,9 @@
     <string name="right">R</string>
     <string name="next">Next</string>
     <string name="promt_setup">Please set up your device as instructed.</string>
-    <string name="insn"><b>Instruction</b> \n \n
+    <string name="insn"><b>Instructions</b> \n \n
         \u2022 Place your device vertically against a wall or other stable surface. \n
-        \u2022 When you click on “Begin,” the camera will open. \n
-        \n <b>Important</b>: Please <u>grant this app permission</u> to access the camera, or the app may not function properly.
-        Press the lightbulb button at the bottom of this page if you need help. \n \n
+        \u2022 When you click on “Begin,” the camera will open. Please <u>grant this app permission</u> to access the camera.
 \u2022 When the camera opens, make sure you can see the non-affected body part entirely, and make sure the affected body part is fully covered and out of view. \n
         \u2022 Complete <b>at least 20 minutes</b> of mirror imagery a day, <b>every day</b>, until you no longer have any symptoms. \n
 \u2022 Start with simple and basic movements before progressing towards more complex and functional movements, as symptoms allow. \n
@@ -140,6 +138,15 @@ https://www.ninds.nih.gov/Disorders/Patient-Caregiver-Education/Fact-Sheets/Comp
 https://www.theacpa.org \n\n
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1820749
     </string>
+
     <string name="edit">Edit</string>
     <string name="save">Save</string>
+
+    <string name="summary">Summary</string>
+    <string name="you_ve_passed">You\'ve passed!</string>
+    <string name="day_count">%1$d days to go</string>
+    <string name="avg_time">Average response time: %1$d s</string>
+    <string name="accuracy">Accuracy: %1$d percent</string>
+    <string name="msg_fail">Good job! Keep working to reach the goal.</string>
+
 </resources>

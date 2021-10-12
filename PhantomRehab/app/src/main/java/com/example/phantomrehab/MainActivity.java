@@ -18,15 +18,24 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText Username, Password, Cell;
     private Button Login;
 
+    private DatabaseReference reff;
     private FirebaseAuth fAuth;
 
     private ImageView PlayIcon, MuteIcon;
+    private TextView SignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +47,20 @@ public class MainActivity extends AppCompatActivity {
         Cell = (EditText) findViewById(R.id.enter_phone);
         Password = (EditText) findViewById(R.id.enter_pw);
         Login = (Button) findViewById(R.id.btn_login);
+        SignUp = (TextView) findViewById(R.id.sign_up);
 
         fAuth = FirebaseAuth.getInstance();
 
         MuteIcon = findViewById(R.id.mute);
         PlayIcon = findViewById(R.id.volume);
+
+        //register for a new account
+        SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+            }
+        });
 
         //set up authentification
         Login.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +69,19 @@ public class MainActivity extends AppCompatActivity {
 
                 if ((Username.getText() != null) || (Password.getText() != null)) {
 
+                    //email-password verification
                     String user = Username.getText().toString();
                     String pw = Password.getText().toString();
+                    String cell = Cell.getText().toString();
 
-                    validate(user, pw);
+//                    storeCellIndex(false);
+                    validateCell(cell, user);
+
+                    if (loadCellIndex()) {validate(user, pw);}
+                    else {
+                        Toast.makeText(getApplicationContext(), "Login failed. Wrong cell number.",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -122,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                storeRoot();
                                 Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             } else {
@@ -131,11 +159,52 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
-
-        storeRoot();
     }
 
-    public void register(View view) {
-        startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+    private void validateCell(String cell, String user) {
+
+        //validate cell number:
+        // 1. access database (can database be accessed successfully?) and retrieve email
+        // 2. compare entered email with retrieved email
+
+        reff = FirebaseDatabase.getInstance().getReference().child("users");
+
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.child(cell).exists()) {
+                    String dbEmail = snapshot.child(cell).child("User Information/email").getValue().toString();
+                    if (dbEmail.equals(user)){
+                        storeCellIndex(true);
+                        Toast.makeText(getApplicationContext(), "exist", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    storeCellIndex(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
+
+    private void storeCellIndex(boolean b) {
+        SharedPreferences sharedPreferences = getSharedPreferences("CellIndex", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("cell_index", b);
+        editor.apply();
+    }
+
+    private boolean loadCellIndex(){
+        SharedPreferences sharedPreferences = getSharedPreferences("CellIndex", MODE_PRIVATE);
+        boolean b = sharedPreferences.getBoolean("cell_index", false);
+        return b;
+    }
+
+//    public void register(View view) {
+//        startActivity(new Intent(getApplicationContext(), SignupActivity.class));
+//    }
 }

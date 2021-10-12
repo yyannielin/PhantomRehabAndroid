@@ -21,28 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText Phone, Password;
+    EditText Phone;
     ImageView PlayIcon, MuteIcon;
-    TextView tvUsername, tvPhone, tvPassword, tvEmail;
-    RelativeLayout Verification, ProfileInfo;
+
     DatabaseReference reff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        //verification
-        Phone = findViewById(R.id.phone);
-//        Password = findViewById(R.id.pw);
-
-        Verification = findViewById(R.id.verification);
-        ProfileInfo = findViewById(R.id.profile_info);
-
-        tvUsername = findViewById(R.id.enter_username);
-        tvPhone = findViewById(R.id.enter_phone);
-        tvPassword = findViewById(R.id.enter_pw);
-        tvEmail = findViewById(R.id.enter_email);
 
         //manage music
         MuteIcon = findViewById(R.id.mute);
@@ -81,7 +68,8 @@ public class ProfileActivity extends AppCompatActivity {
     public void verify(View view) {
 
         String dbPhone = loadRoot();
-        reff = FirebaseDatabase.getInstance().getReference().child("users").child(dbPhone);
+        reff = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(dbPhone).child("User Information");
 
         //retrieve info
         reff.addValueEventListener(new ValueEventListener() {
@@ -93,20 +81,12 @@ public class ProfileActivity extends AppCompatActivity {
                 String dbEmail = snapshot.child("email").getValue().toString();
                 String dbPassword = snapshot.child("pw").getValue().toString();
 
+                Phone = findViewById(R.id.phone);
                 String phone = Phone.getText().toString();
-//                String pw = Password.getText().toString();
 
                 if (dbPhone.equals(phone)){
 
-                    Toast.makeText(ProfileActivity.this, "Identity verified.",Toast.LENGTH_SHORT).show();
-
-                    Verification.setVisibility(View.GONE);
-                    ProfileInfo.setVisibility(View.VISIBLE);
-
-                    tvUsername.setText(dbName);
-                    tvEmail.setText(dbEmail);
-                    tvPassword.setText(dbPassword);
-                    tvPhone.setText(phone);
+//                    Toast.makeText(ProfileActivity.this, "Identity verified.",Toast.LENGTH_SHORT).show();
 
                     //store info in shared_preference in case user wants to edit info
 
@@ -114,6 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
                     storeProfile_email(dbEmail);
                     storeProfile_pw(dbPassword);
 
+                    startActivity(new Intent(getApplicationContext(), ShowProfile.class));
                 }
 
                 else {
@@ -128,10 +109,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    //edit info
-    public void edit(View view) {
-        startActivity(new Intent(getApplicationContext(), EditProfile.class));
-    }
 
     //store user-profile
 

@@ -12,10 +12,11 @@
     <color name="blue_theme">#4997D0</color>
     <color name="grey_secondary">#F0F0F0</color>
     <color name="blue_tertiary">#62B0DF</color>
+    <color name="blue_shade">#5385A9</color>
 
     <color name="grey_infobar">#4D4D4D</color>
     <color name="blue_left_btn">#5385A9</color>
-<!--    <color name="blue_light_bg">#C8EAFF</color>-->
+    <!--    <color name="blue_light_bg">#C8EAFF</color>-->
     <color name="blue_light_bg">#ABDFFF</color>
 
 <!--    teal theme-->
@@ -35,5 +36,6 @@
     <color name="blue_link">#0338F5</color>
     <color name="red">#FF0000</color>
     <color name="blue_function">#5385A9</color>
+    <color name="green_pass">#74AF60</color>
 
 </resources>
