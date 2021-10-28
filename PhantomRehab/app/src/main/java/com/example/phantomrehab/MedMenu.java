@@ -1,6 +1,5 @@
 package com.example.phantomrehab;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ public class MedMenu extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), EditProfile.class));
     }
 
     public void toProgress(View view) {

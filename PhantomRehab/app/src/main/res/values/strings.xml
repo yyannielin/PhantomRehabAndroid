@@ -58,7 +58,7 @@ Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Tr
     <string name="gmi_info">The brain has "maps" of the body and when an amputation happens, those maps no longer match the sensory and motor signals from the body. Graded Motor Imagery training techniques cause the brain to “re-think” the pain response that it has been experiencing since the amputation and adopt the image of the healthy hand in place of the injured limb.
     </string>
     <string name="done"><b>Done</b></string>
-    <string name="enter_cell_number">Enter cell number</string>
+    <string name="enter_your_email">Enter your email</string>
     <string name="set_reminder">Confirm</string>
     <string name="laterality_training">Laterality Training</string>
     <string name="laterality_hint">You are recommended to do this training 5 times a day, 5 minutes per time. Set reminders for yourself here :D</string>
@@ -148,5 +148,16 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1820749
     <string name="avg_time">Average response time: %1$d s</string>
     <string name="accuracy">Accuracy: %1$d percent</string>
     <string name="msg_fail">Good job! Keep working to reach the goal.</string>
+
+    <string name="change_or_forget_pw">
+        <u>Change password? \n
+            Forget password?</u>
+    </string>
+    <string name="current_password">Current Password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="update">Update</string>
+    <string name="enter_cell_number">Enter cell number</string>
+    <string name="reset_password">Reset Password</string>
 
 </resources>

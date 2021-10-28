@@ -10,7 +10,6 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class BeginnerMain extends AppCompatActivity {
 
@@ -549,7 +547,7 @@ public class BeginnerMain extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), EditProfile.class));
     }
 
     public void toProgress(View view) {

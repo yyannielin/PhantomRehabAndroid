@@ -40,10 +40,22 @@ public class ProgressActivity  extends AppCompatActivity {
         MuteIcon = findViewById(R.id.mute);
         PlayIcon = findViewById(R.id.volume);
 
+        if (!getMusicPref()) {
+            //update UI
+            MuteIcon.setVisibility(View.GONE);
+            PlayIcon.setVisibility(View.VISIBLE);
+        }
+        else {
+            //if music_pref is true, autoplay music when returning from a video activity
+            startService(new Intent(getApplicationContext(), MusicService.class));
+        }
+
         MuteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //mute on click of btn; display mute icon (click to play); current status is play
                 stopService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(false);
 
                 //update UI
                 PlayIcon.setVisibility(View.VISIBLE);
@@ -55,10 +67,11 @@ public class ProgressActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(true);
 
                 //update UI
                 MuteIcon.setVisibility(View.VISIBLE);
-                PlayIcon.setVisibility(View.INVISIBLE);
+                PlayIcon.setVisibility(View.GONE);
             }
         });
     }
@@ -125,7 +138,7 @@ public class ProgressActivity  extends AppCompatActivity {
     //tab bar control
 
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 
     public void toProgress(View view) {
@@ -142,5 +155,19 @@ public class ProgressActivity  extends AppCompatActivity {
 
     public void toHome(View view) {
         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+    }
+
+
+    //music management
+    private void storeMusicPref(boolean pref) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("music",pref);
+        editor.apply();
+    }
+
+    private boolean getMusicPref(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("music", true);
     }
 }

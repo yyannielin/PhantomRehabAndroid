@@ -50,7 +50,7 @@ public class IntermedMain extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 
     public void toProgress(View view) {

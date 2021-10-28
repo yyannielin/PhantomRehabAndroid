@@ -59,7 +59,8 @@ public class ReminderActivity extends AppCompatActivity {
     public void selectTime() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 ReminderActivity.this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                android.R.style.Theme_Holo_Light_Dialog,
+//                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

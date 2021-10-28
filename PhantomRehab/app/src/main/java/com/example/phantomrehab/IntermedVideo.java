@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.text.SimpleDateFormat;
@@ -68,6 +70,35 @@ public class IntermedVideo extends AppCompatActivity {
         Video3 = findViewById(R.id.youtube_player_view3);
         getLifecycle().addObserver(Video3);
 
+        Video1.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="inpok4MKVLM";
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        Video2.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="ZToicYcHIOU";
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        Video3.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="d4S4twjeWTs";
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
 
         //level control
         calendar = Calendar.getInstance();
@@ -369,7 +400,7 @@ public class IntermedVideo extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), EditProfile.class));
     }
 
     public void toProgress(View view) {
@@ -384,4 +415,7 @@ public class IntermedVideo extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 
+    public void toGMI(View view) {
+        startActivity(new Intent(getApplicationContext(),ChooseLevel.class));
+    }
 }

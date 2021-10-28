@@ -116,10 +116,6 @@
         android:layout_below="@+id/save_progress"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-
-        app:videoId="yyduqrCpKGg"
-        app:autoPlay="true"
-        app:showFullScreenButton="true"
         />
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -129,10 +125,6 @@
 
         android:layout_below="@+id/youtube_player_view1"
         android:layout_marginBottom="30dp"
-
-        app:videoId="yyduqrCpKGg"
-        app:autoPlay="true"
-        app:showFullScreenButton="true"
         />
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -142,10 +134,6 @@
 
         android:layout_below="@+id/youtube_player_view2"
         android:layout_marginBottom="30dp"
-
-        app:videoId="yyduqrCpKGg"
-        app:autoPlay="true"
-        app:showFullScreenButton="true"
         />
 
     <Button
@@ -194,7 +182,7 @@
             android:id="@+id/therapy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/therapy"
+            android:src="@drawable/therapy_fill"
             android:layout_toStartOf="@+id/progress"
             android:layout_marginEnd="16dp"
             />

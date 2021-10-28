@@ -3,42 +3,50 @@ package com.example.phantomrehab;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ProfileActivity extends AppCompatActivity {
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-    TextView tvUsername, tvPhone, tvPassword, tvEmail;
-    ImageView MuteIcon, PlayIcon;
+public class EditPassword extends AppCompatActivity {
+
+    EditText new_pw, re_pw;
+    Button update;
+
+    String s_email, s_new_pw, s_re_pw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_profile);
+        setContentView(R.layout.activity_edit_password);
 
-        tvUsername = findViewById(R.id.enter_username);
-        tvPhone = findViewById(R.id.enter_phone);
-        tvPassword = findViewById(R.id.enter_pw);
-        tvEmail = findViewById(R.id.enter_email);
+        new_pw = findViewById(R.id.et_new_pw);
+        re_pw = findViewById(R.id.et_re_pw);
+        update = findViewById(R.id.btn_update);
 
-        String dbName = loadProfile_user();
-        String dbEmail = loadProfile_email();
-        String dbPassword = loadProfile_pw();
-        String dbPhone = loadProfile_phone();
-
-        //update textview to display user info
-        tvUsername.setText(dbName);
-        tvEmail.setText(dbEmail);
-        tvPassword.setText("dbPassword123456");
-        tvPhone.setText(dbPhone);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePw();
+            }
+        });
 
 
         //manage music
-        MuteIcon = findViewById(R.id.mute);
-        PlayIcon = findViewById(R.id.volume);
+        ImageView MuteIcon = findViewById(R.id.mute);
+        ImageView PlayIcon = findViewById(R.id.volume);
 
         if (!getMusicPref()) {
             //update UI
@@ -76,32 +84,50 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    //update pw
+    private void changePw() {
 
-    //button control
-    public void edit(View view) {
-        startActivity(new Intent(getApplicationContext(), ProfileVerification.class));
-    }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        s_new_pw = new_pw.getText().toString();
+        s_re_pw = re_pw.getText().toString();
 
-    //load root node
-    private String loadRoot(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
-        String root = sharedPreferences.getString("root", "");
-        return root;
-    }
+        if (TextUtils.isEmpty(s_new_pw)){
+            new_pw.setError("Password is required.");
+        }
 
+        else if (s_new_pw.length() < 6){
+            new_pw.setError("Password must be at least 6 characters.");
+        }
 
-    //load other user info
-    private String loadProfile_phone() {
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        String s = sharedPreferences.getString("phone", "");
-        return s;
-    }
+        else if (!s_new_pw.equals(s_re_pw)){
+            re_pw.setError("Password doesn't match.");
+        }
 
-    private String loadProfile_user(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        String s = sharedPreferences.getString("user", "");
-        return s;
+        else{
+
+            if (user != null) {
+                user.updatePassword(s_new_pw)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getApplicationContext(), "Password updated successfully.",
+                                        Toast.LENGTH_SHORT).show();
+
+                                startActivity(new Intent(getApplicationContext(), EditProfile.class));
+                            }
+                        })
+
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(), "Password reset failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                ;
+            }
+        }
     }
 
     private String loadProfile_email(){
@@ -110,16 +136,9 @@ public class ProfileActivity extends AppCompatActivity {
         return s;
     }
 
-    private String loadProfile_pw(){
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        String s = sharedPreferences.getString("pw", "");
-        return s;
-    }
-
-
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), EditProfile.class));
     }
 
     public void toProgress(View view) {

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.net.Inet4Address;
 
 public class ChooseLevel extends AppCompatActivity implements View.OnClickListener {
 
@@ -89,7 +86,8 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
 
         // music control
         // play music if user returns from video activity where music stops by default
-        startService(new Intent(getApplicationContext(), MusicService.class));
+//        startService(new Intent(getApplicationContext(), MusicService.class));
+        musicPref();
 
         MuteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +125,7 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
     //music control
     private void mute() {
         stopService(new Intent(getApplicationContext(), MusicService.class));
+        storeMusicPref(false);
 
         //update UI
         PlayIcon.setVisibility(View.VISIBLE);
@@ -135,17 +134,45 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
 
     private void play() {
         startService(new Intent(getApplicationContext(), MusicService.class));
+        storeMusicPref(true);
 
         //update UI
         MuteIcon.setVisibility(View.VISIBLE);
         PlayIcon.setVisibility(View.INVISIBLE);
     }
 
+    private void musicPref() {
+        if (!getMusicPref()) {
+            //update UI
+//            Toast.makeText(getApplicationContext(), "music_pref = false", Toast.LENGTH_SHORT).show();
+
+            MuteIcon.setVisibility(View.GONE);
+            PlayIcon.setVisibility(View.VISIBLE);
+        }
+        else {
+            //if music_pref is true, autoplay music when returning from a video activity
+            startService(new Intent(getApplicationContext(), MusicService.class));
+        }
+    }
+
+    private void storeMusicPref(boolean pref) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("music",pref);
+        editor.apply();
+
+//        Toast.makeText(getApplicationContext(), "music_pref stored", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean getMusicPref(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("music", true);
+    }
 
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 
     public void toProgress(View view) {

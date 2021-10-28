@@ -171,7 +171,7 @@
         android:layout_centerHorizontal="true"
 
         android:fontFamily="@font/raleway_semibold"
-        android:text="@string/motor_imagery"
+        android:text="@string/mirror_therapy"
 
         android:textColor="@color/black"
         android:textSize="22sp" />

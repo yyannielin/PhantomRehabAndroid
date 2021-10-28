@@ -90,8 +90,8 @@
         android:layout_width="90dp"
         android:layout_height="25dp"
 
-        android:background="@color/grey_secondary"
-        android:fontFamily="@font/raleway"
+        android:background="@color/blue_tertiary"
+        android:fontFamily="@font/raleway_semibold"
 
         android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"
@@ -176,8 +176,8 @@
         android:layout_width="90dp"
         android:layout_height="25dp"
 
-        android:background="@color/grey_secondary"
-        android:fontFamily="@font/raleway"
+        android:background="@color/blue_tertiary"
+        android:fontFamily="@font/raleway_semibold"
 
         android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"
@@ -262,8 +262,8 @@
         android:layout_width="90dp"
         android:layout_height="25dp"
 
-        android:background="@color/grey_secondary"
-        android:fontFamily="@font/raleway"
+        android:background="@color/blue_tertiary"
+        android:fontFamily="@font/raleway_semibold"
 
         android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"

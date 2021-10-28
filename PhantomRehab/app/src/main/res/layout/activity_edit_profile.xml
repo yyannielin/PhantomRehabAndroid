@@ -66,13 +66,36 @@
             android:textSize="22sp" />
 
         <EditText
-            android:id="@+id/enter_email"
+            android:id="@+id/enter_phone"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
 
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/enter_username"
             android:layout_marginBottom="15dp"
+
+            android:drawableStart="@drawable/telephone"
+            android:drawablePadding="30dp"
+            android:ems="10"
+
+            android:fontFamily="@font/raleway"
+            android:text=""
+            android:hint="@string/enter_username"
+
+            android:paddingStart="26dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:textColorHint="@color/grey_input"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/enter_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/enter_phone"
+            android:layout_marginBottom="30dp"
             android:drawableStart="@drawable/envelope"
 
             android:drawablePadding="30dp"
@@ -88,35 +111,33 @@
             android:textColorHint="@color/grey_input"
             android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/enter_pw"
-            android:layout_width="300dp"
-            android:layout_height="59dp"
+<!--        <EditText-->
+<!--            android:id="@+id/enter_pw"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/enter_email"-->
 
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/enter_email"
-            android:layout_marginBottom="30dp"
+<!--            android:layout_marginBottom="30dp"-->
+<!--            android:drawableStart="@drawable/lock"-->
+<!--            android:drawablePadding="30dp"-->
+<!--            android:ems="10"-->
+<!--            android:fontFamily="@font/raleway"-->
+<!--            android:hint="@string/enter_password"-->
 
-            android:drawableStart="@drawable/lock"
-            android:drawablePadding="30dp"
-            android:ems="10"
-            android:fontFamily="@font/raleway"
-            android:text=""
-            android:hint="@string/enter_password"
+<!--            android:paddingStart="26dp"-->
+<!--            android:paddingTop="14dp"-->
 
-            android:paddingStart="26dp"
-            android:paddingTop="14dp"
-
-            android:paddingBottom="14dp"
-            android:textColorHint="@color/grey_input"
-            android:textSize="22sp" />
+<!--            android:paddingBottom="14dp"-->
+<!--            android:text=""-->
+<!--            android:textColorHint="@color/grey_input"-->
+<!--            android:textSize="22sp" />-->
 
         <Button
             android:id="@+id/edit"
             android:layout_width="230dp"
             android:layout_height="59dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/enter_pw"
+            android:layout_below="@+id/enter_email"
 
             android:background="@drawable/bg_button"
 
@@ -130,6 +151,29 @@
             app:cornerRadius="35dp"
 
             android:onClick="save"
+            />
+
+        <Button
+            android:id="@+id/reset_pw"
+            android:layout_width="230dp"
+            android:layout_height="59dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/edit"
+            android:layout_marginTop="30dp"
+
+            android:background="@drawable/bg_button"
+
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/reset_password"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:letterSpacing="0.05"
+
+            app:backgroundTint="@color/grey_secondary"
+            app:cornerRadius="35dp"
+
+            android:onClick="editPw"
             />
 
     </RelativeLayout>

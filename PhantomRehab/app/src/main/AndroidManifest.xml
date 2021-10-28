@@ -25,10 +25,12 @@
             </intent-filter>
         </activity>
 
+<!--        <activity android:name=".CheckUser"/>-->
+
         <activity android:name=".SignupActivity"/>
 
         <activity android:name=".HomeActivity"/>
-        <activity android:name=".MedMenu"/>
+<!--        <activity android:name=".MedMenu"/>-->
         <activity android:name=".MedActivity"/>
         <activity android:name=".MedFinish"/>
         <activity android:name=".ReminderActivity"/>
@@ -40,8 +42,9 @@
         <activity android:name=".TextSizeActivity"/>
 
         <activity android:name=".ProfileActivity"/>
-        <activity android:name=".ShowProfile"/>
+        <activity android:name=".ProfileVerification"/>
         <activity android:name=".EditProfile"/>
+        <activity android:name=".EditPassword"/>
 
         <activity android:name=".ProgressActivity"/>
 

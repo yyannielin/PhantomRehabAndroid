@@ -1,6 +1,7 @@
 package com.example.phantomrehab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +23,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class SignupActivity extends AppCompatActivity {
 
     private EditText Username, Phone, Email, Password, RePassword;
@@ -29,8 +33,11 @@ public class SignupActivity extends AppCompatActivity {
     private ImageView PlayIcon, MuteIcon;
     private FirebaseAuth fAuth;
 
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    private FirebaseDatabase rootNode;
+    private FirebaseUser fUser;
+    private DatabaseReference reference;
+
+    private String hashed_pw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +73,24 @@ public class SignupActivity extends AppCompatActivity {
         MuteIcon = findViewById(R.id.mute);
         PlayIcon = findViewById(R.id.volume);
 
+        if (!getMusicPref()) {
+            //update UI
+//            Toast.makeText(getApplicationContext(), "music_pref = false", Toast.LENGTH_SHORT).show();
+
+            MuteIcon.setVisibility(View.GONE);
+            PlayIcon.setVisibility(View.VISIBLE);
+        }
+        else {
+            //if music_pref is true, autoplay music when returning from a video activity
+            startService(new Intent(getApplicationContext(), MusicService.class));
+        }
+
         MuteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //mute on click of btn; display mute icon (click to play); current status is play
                 stopService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(false);
 
                 //update UI
                 PlayIcon.setVisibility(View.VISIBLE);
@@ -81,10 +102,11 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(true);
 
                 //update UI
                 MuteIcon.setVisibility(View.VISIBLE);
-                PlayIcon.setVisibility(View.INVISIBLE);
+                PlayIcon.setVisibility(View.GONE);
             }
         });
     }
@@ -142,12 +164,18 @@ public class SignupActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(SignupActivity.this, "User created.",Toast.LENGTH_SHORT).show();
 
+                            //encrypt password
+                            hash(pw);
+
                             //store information in database
                             rootNode = FirebaseDatabase.getInstance();
+                            fUser = fAuth.getCurrentUser();
                             reference = rootNode.getReference("users");
 
-                            UserHelper helper = new UserHelper(user, email, pw, phone);
-                            reference.child(phone).child("User Information").setValue(helper); //use unique phone number as ID
+                            UserHelper helper = new UserHelper(user, email, hashed_pw, phone);
+
+                            String uid = fUser.getUid();
+                            reference.child(uid).child("User Information").setValue(helper); //use unique phone number as ID
 
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
@@ -160,6 +188,42 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    //password encryption
+    public void hash(String password){
+        try{
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(password.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            StringBuffer MD5Hash = new StringBuffer();
+            for (int i = 0; i<messageDigest.length; i++){
+                String h = Integer.toHexString(0xFF & messageDigest[i]);
+                while (h.length()<2)
+                    h = "0" + h;
+                MD5Hash.append(h);
+            }
+
+            hashed_pw = MD5Hash.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //music management
+    private void storeMusicPref(boolean pref) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("music",pref);
+        editor.apply();
+//        Toast.makeText(getApplicationContext(), "music_pref stored", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean getMusicPref(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("music", true);
     }
 }
 

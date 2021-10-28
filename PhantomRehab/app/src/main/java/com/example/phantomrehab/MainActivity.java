@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView PlayIcon, MuteIcon;
     private TextView SignUp;
 
+    private String UID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         //initialization
         Username = (EditText) findViewById(R.id.enter_username);
-        Cell = (EditText) findViewById(R.id.enter_phone);
+//        Cell = (EditText) findViewById(R.id.enter_phone);
         Password = (EditText) findViewById(R.id.enter_pw);
         Login = (Button) findViewById(R.id.btn_login);
         SignUp = (TextView) findViewById(R.id.sign_up);
@@ -72,22 +75,37 @@ public class MainActivity extends AppCompatActivity {
                     //email-password verification
                     String user = Username.getText().toString();
                     String pw = Password.getText().toString();
-                    String cell = Cell.getText().toString();
+//                    String cell = Cell.getText().toString();
+
+                    validate(user,pw);
 
 //                    storeCellIndex(false);
-                    validateCell(cell, user);
+//                    validateCell(cell, user); //this causes error for admin login
 
-                    if (loadCellIndex()) {validate(user, pw);}
-                    else {
-                        Toast.makeText(getApplicationContext(), "Login failed. Wrong cell number.",
-                                Toast.LENGTH_SHORT).show();
-                    }
+//                    if (loadCellIndex()) {validate(user, pw);}
+//                    else {
+//                        Toast.makeText(getApplicationContext(), "Login failed. Wrong cell number.",
+//                                Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });
 
         //play background music upon launching app
-        startService(new Intent(getApplicationContext(), MusicService.class));
+
+        if (!getMusicPref()) {
+            //update UI
+//            Toast.makeText(getApplicationContext(), "music_pref = false", Toast.LENGTH_SHORT).show();
+
+            MuteIcon.setVisibility(View.GONE);
+            PlayIcon.setVisibility(View.VISIBLE);
+        }
+        else {
+            //if music_pref is true, autoplay music when returning from a video activity
+            startService(new Intent(getApplicationContext(), MusicService.class));
+        }
+
+//        startService(new Intent(getApplicationContext(), MusicService.class));
 
         MuteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                 //update UI
                 PlayIcon.setVisibility(View.VISIBLE);
                 MuteIcon.setVisibility(View.GONE);
+
+                //save status to shared_preference
+                storeMusicPref(false);
             }
         });
 
@@ -104,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(true);
 
                 //update UI
                 MuteIcon.setVisibility(View.VISIBLE);
@@ -112,13 +134,29 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //music management
+
+    private void storeMusicPref(boolean pref) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("music",pref);
+        editor.apply();
+
+//        Toast.makeText(getApplicationContext(), "music_pref stored", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean getMusicPref(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("music", true);
+    }
+
 
     //store user-root
 
     private void storeRoot() {
         SharedPreferences sharedPreferences = getSharedPreferences("Root", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("root", Cell.getText().toString());
+        editor.putString("root", UID);
         editor.apply();
     }
 
@@ -149,8 +187,17 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
+                                FirebaseUser fUser = fAuth.getCurrentUser();
+
+                                if (fUser != null){ UID = fUser.getUid(); }
                                 storeRoot();
+
+//                                Toast.makeText(getApplicationContext(), "root is"+UID, Toast.LENGTH_SHORT).show();
+
                                 Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
+
+//                                startActivity(new Intent(getApplicationContext(), CheckUser.class));
                                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             } else {
                                 Toast.makeText(MainActivity.this, "Login failed. " + task.getException().getMessage(),
@@ -161,48 +208,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void validateCell(String cell, String user) {
-
-        //validate cell number:
-        // 1. access database (can database be accessed successfully?) and retrieve email
-        // 2. compare entered email with retrieved email
-
-        reff = FirebaseDatabase.getInstance().getReference().child("users");
-
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.child(cell).exists()) {
-                    String dbEmail = snapshot.child(cell).child("User Information/email").getValue().toString();
-                    if (dbEmail.equals(user)){
-                        storeCellIndex(true);
-                        Toast.makeText(getApplicationContext(), "exist", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    storeCellIndex(false);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-
-    private void storeCellIndex(boolean b) {
-        SharedPreferences sharedPreferences = getSharedPreferences("CellIndex", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("cell_index", b);
-        editor.apply();
-    }
-
-    private boolean loadCellIndex(){
-        SharedPreferences sharedPreferences = getSharedPreferences("CellIndex", MODE_PRIVATE);
-        boolean b = sharedPreferences.getBoolean("cell_index", false);
-        return b;
-    }
+//    private void validateCell(String cell, String user) {
+//
+//        //validate cell number:
+//        // 1. access database (can database be accessed successfully?) and retrieve email
+//        // 2. compare entered email with retrieved email
+//
+//        reff = FirebaseDatabase.getInstance().getReference().child("users");
+//
+//        reff.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                if (snapshot.child(cell).exists()) {
+//                    String dbEmail = snapshot.child(cell).child("User Information/email").getValue().toString();
+//                    if (dbEmail.equals(user)){
+//                        storeCellIndex(true);
+////                        Toast.makeText(getApplicationContext(), "exist", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                else {
+//                    storeCellIndex(false);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//    }
+//
+//    private void storeCellIndex(boolean b) {
+//        SharedPreferences sharedPreferences = getSharedPreferences("CellIndex", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putBoolean("cell_index", b);
+//        editor.apply();
+//    }
+//
+//    private boolean loadCellIndex(){
+//        SharedPreferences sharedPreferences = getSharedPreferences("CellIndex", MODE_PRIVATE);
+//        boolean b = sharedPreferences.getBoolean("cell_index", false);
+//        return b;
+//    }
 
 //    public void register(View view) {
 //        startActivity(new Intent(getApplicationContext(), SignupActivity.class));
