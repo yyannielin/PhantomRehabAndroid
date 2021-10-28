@@ -83,45 +83,12 @@ public class ProfileVerification extends AppCompatActivity {
     }
 
     public void verify(View view) {
+        String email = loadProfile_email();
+        
+        Password = findViewById(R.id.pw);
+        String pw = Password.getText().toString();
 
-        String root = loadRoot();
-        reff = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(root).child("User Information");
-
-        //retrieve info
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                //retrieve info from database
-                String dbName = snapshot.child("user").getValue().toString();
-                String dbEmail = snapshot.child("email").getValue().toString();
-                String dbPassword = snapshot.child("pw").getValue().toString();
-                String dbPhone = snapshot.child("phone").getValue().toString();
-
-                storeProfile_user(dbName);
-                storeProfile_email(dbEmail);
-                storeProfile_pw(dbPassword);
-                storeProfile_phone(dbPhone);
-
-                Phone = findViewById(R.id.phone);
-                Password = findViewById(R.id.pw);
-                String email = Phone.getText().toString();
-                String pw = Password.getText().toString();
-
-                if (dbEmail.equals(email)){
-                    reauth(email, pw);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Reauthenticated failed. Email or password is wrong.",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
-        });
-
+        reauth(email, pw);
     }
 
     private void reauth(String s_email, String s_cur_pw) {
@@ -159,40 +126,6 @@ public class ProfileVerification extends AppCompatActivity {
         }
 
 //        return boo[0];
-    }
-
-
-    //store user-profile
-
-    private void storeProfile_user(String user) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("user", user);
-
-//        Toast.makeText(getApplicationContext(), "user_stored", Toast.LENGTH_SHORT).show();
-
-        editor.apply();
-    }
-
-    private void storeProfile_email(String email) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("email", email);
-        editor.apply();
-    }
-
-    private void storeProfile_pw(String pw) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("pw", pw);
-        editor.apply();
-    }
-
-    private void storeProfile_phone(String pw) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("phone", pw);
-        editor.apply();
     }
 
     private String loadProfile_phone(){

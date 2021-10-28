@@ -7,7 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -23,6 +30,8 @@ public class ProfileActivity extends AppCompatActivity {
         tvPhone = findViewById(R.id.enter_phone);
         tvPassword = findViewById(R.id.enter_pw);
         tvEmail = findViewById(R.id.enter_email);
+
+        loadInfo();
 
         String dbName = loadProfile_user();
         String dbEmail = loadProfile_email();
@@ -76,6 +85,33 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    private void loadInfo() {
+        String root = loadRoot();
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(root).child("User Information");
+
+        //retrieve info
+        reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                //retrieve info from database
+                String dbName = snapshot.child("user").getValue().toString();
+                String dbEmail = snapshot.child("email").getValue().toString();
+                String dbPassword = snapshot.child("pw").getValue().toString();
+                String dbPhone = snapshot.child("phone").getValue().toString();
+
+                storeProfile_user(dbName);
+                storeProfile_email(dbEmail);
+                storeProfile_pw(dbPassword);
+                storeProfile_phone(dbPhone);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+    }
+
 
     //button control
     public void edit(View view) {
@@ -90,6 +126,39 @@ public class ProfileActivity extends AppCompatActivity {
         return root;
     }
 
+
+    //store user-profile
+
+    private void storeProfile_user(String user) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("user", user);
+
+//        Toast.makeText(getApplicationContext(), "user_stored", Toast.LENGTH_SHORT).show();
+
+        editor.apply();
+    }
+
+    private void storeProfile_email(String email) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.apply();
+    }
+
+    private void storeProfile_pw(String pw) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("pw", pw);
+        editor.apply();
+    }
+
+    private void storeProfile_phone(String pw) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Profile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("phone", pw);
+        editor.apply();
+    }
 
     //load other user info
     private String loadProfile_phone() {

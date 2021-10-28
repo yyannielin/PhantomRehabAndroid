@@ -56,34 +56,34 @@
             android:paddingStart="10dp"
             />
 
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="300dp"
-            android:layout_height="59dp"
-            android:layout_gravity="center"
-            android:layout_below="@+id/verification_prompt"
+<!--        <EditText-->
+<!--            android:id="@+id/phone"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="59dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_below="@+id/verification_prompt"-->
 
-            android:layout_marginBottom="35dp"
+<!--            android:layout_marginBottom="35dp"-->
 
-            android:background="@drawable/bg_input"
+<!--            android:background="@drawable/bg_input"-->
 
-            android:ems="10"
+<!--            android:ems="10"-->
 
-            android:fontFamily="@font/raleway"
-            android:hint="@string/enter_email"
-            android:inputType="textEmailAddress"
-            android:paddingStart="26dp"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp"
-            android:textColorHint="@color/grey_input"
-            android:textSize="22sp" />
+<!--            android:fontFamily="@font/raleway"-->
+<!--            android:hint="@string/enter_email"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:paddingStart="26dp"-->
+<!--            android:paddingTop="14dp"-->
+<!--            android:paddingBottom="14dp"-->
+<!--            android:textColorHint="@color/grey_input"-->
+<!--            android:textSize="22sp" />-->
 
         <EditText
             android:id="@+id/pw"
             android:layout_width="300dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
-            android:layout_below="@+id/phone"
+            android:layout_below="@+id/verification_prompt"
 
             android:layout_marginBottom="40dp"
 
