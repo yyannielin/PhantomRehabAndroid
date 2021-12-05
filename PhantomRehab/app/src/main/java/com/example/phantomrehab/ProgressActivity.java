@@ -83,8 +83,8 @@ public class ProgressActivity  extends AppCompatActivity {
         int lat_count = loadDayCounter();
         int lat_prog = lat_count*100/7;
 
-        Toast.makeText(getApplicationContext(),"count: " + lat_count,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"count: " + lat_count,
+//                Toast.LENGTH_SHORT).show();
 
         LatProgress.setProgress(lat_prog);
 
@@ -100,8 +100,8 @@ public class ProgressActivity  extends AppCompatActivity {
         MotProgress.setProgress(mot_prog);
         MotText.setText(formatted);
 
-        Toast.makeText(getApplicationContext(),"count: " + mot_count,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"count: " + mot_count,
+//                Toast.LENGTH_SHORT).show();
     }
 
     private void updateMirProg() {
@@ -112,8 +112,8 @@ public class ProgressActivity  extends AppCompatActivity {
         MirProgress.setProgress(mir_prog);
         MirText.setText(formatted);
 
-        Toast.makeText(getApplicationContext(),"count: " + mir_count,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"count: " + mir_count,
+//                Toast.LENGTH_SHORT).show();
     }
 
     private int loadDayCounter() {

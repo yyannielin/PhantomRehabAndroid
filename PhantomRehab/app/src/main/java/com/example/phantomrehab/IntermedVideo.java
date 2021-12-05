@@ -45,6 +45,10 @@ public class IntermedVideo extends AppCompatActivity {
     private YouTubePlayerView Video1;
     private YouTubePlayerView Video2;
     private YouTubePlayerView Video3;
+    private YouTubePlayerView Video4;
+    private YouTubePlayerView Video5;
+    private YouTubePlayerView Video6;
+    private YouTubePlayerView Video7;
 
     //stopwatch control
 
@@ -70,12 +74,24 @@ public class IntermedVideo extends AppCompatActivity {
         Video3 = findViewById(R.id.youtube_player_view3);
         getLifecycle().addObserver(Video3);
 
+        Video4 = findViewById(R.id.youtube_player_view4);
+        getLifecycle().addObserver(Video4);
+
+        Video5 = findViewById(R.id.youtube_player_view5);
+        getLifecycle().addObserver(Video5);
+
+        Video6 = findViewById(R.id.youtube_player_view6);
+        getLifecycle().addObserver(Video6);
+
+        Video7 = findViewById(R.id.youtube_player_view7);
+        getLifecycle().addObserver(Video7);
+
         Video1.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="inpok4MKVLM";
+                String videoId="hSIYGZhRGd4"; //walking: Central Park People Watching
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
@@ -85,7 +101,7 @@ public class IntermedVideo extends AppCompatActivity {
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="ZToicYcHIOU";
+                String videoId="Ugwp8wSkVeQ"; //cooking: Damn Good Vegan Meals in UNDER 15 MINUTES | 3 Easy Vegan Recipes
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
@@ -95,7 +111,47 @@ public class IntermedVideo extends AppCompatActivity {
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="d4S4twjeWTs";
+                String videoId="NSG3k13HYjw"; //Buttoning a shirt: Montessori Buttoning a Shirt
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        Video4.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="B4lyPhPAffw"; //Opening jars: Montessori Opening and Closing Jars and Lids
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        Video5.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="ZdZ9vOTsClU"; //Driving a manual car: Manual Car Vid
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        Video6.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="WRtRIx70S3k"; //Painting toenails: How To: Gel Polish Toes At Home | DIY Dry Pedicure
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        Video7.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId="wMGANlT9vlM"; //Floor to Stand Transfer: Getting Up From the Floor Safely - Ask Doctor Jo
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
@@ -172,8 +228,8 @@ public class IntermedVideo extends AppCompatActivity {
 
         int count = loadMotDayCounter();
 
-        Toast.makeText(getApplicationContext(),"new day count:" + count,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),"new day count:" + count,
+//                Toast.LENGTH_SHORT).show();
 
         if (count == 14){
 
@@ -400,7 +456,7 @@ public class IntermedVideo extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(), EditProfile.class));
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 
     public void toProgress(View view) {

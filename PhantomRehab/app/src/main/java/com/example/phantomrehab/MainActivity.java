@@ -1,11 +1,14 @@
 package com.example.phantomrehab;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,16 +43,25 @@ public class MainActivity extends AppCompatActivity {
 
     private String UID;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //color management
+        TextView navbar = findViewById(R.id.navbar);
+        Login = (Button) findViewById(R.id.btn_login);
+
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+            Login.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+        }
+
         //initialization
         Username = (EditText) findViewById(R.id.enter_username);
 //        Cell = (EditText) findViewById(R.id.enter_phone);
         Password = (EditText) findViewById(R.id.enter_pw);
-        Login = (Button) findViewById(R.id.btn_login);
         SignUp = (TextView) findViewById(R.id.sign_up);
 
         fAuth = FirebaseAuth.getInstance();
@@ -132,6 +144,13 @@ public class MainActivity extends AppCompatActivity {
                 PlayIcon.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 
     //music management

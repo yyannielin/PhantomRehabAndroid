@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
+    ImageView MuteIcon, PlayIcon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +25,51 @@ public class HomeActivity extends AppCompatActivity {
             navbar.setBackgroundColor(getColor());
         }
 
-        //manage music
-        ImageView PlayIcon, MuteIcon;
-        MuteIcon = findViewById(R.id.mute); //click to mute
+        // music control
+        // play music if user returns from video activity where music stops by default
+//        startService(new Intent(getApplicationContext(), MusicService.class));
+
+        MuteIcon = findViewById(R.id.mute);
         PlayIcon = findViewById(R.id.volume);
 
+        musicPref();
+
+        MuteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mute();
+            }
+        });
+
+        PlayIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                play();
+            }
+        });
+    }
+
+
+    //music control
+    private void mute() {
+        stopService(new Intent(getApplicationContext(), MusicService.class));
+        storeMusicPref(false);
+
+        //update UI
+        PlayIcon.setVisibility(View.VISIBLE);
+        MuteIcon.setVisibility(View.GONE);
+    }
+
+    private void play() {
+        startService(new Intent(getApplicationContext(), MusicService.class));
+        storeMusicPref(true);
+
+        //update UI
+        MuteIcon.setVisibility(View.VISIBLE);
+        PlayIcon.setVisibility(View.INVISIBLE);
+    }
+
+    private void musicPref() {
         if (!getMusicPref()) {
             //update UI
 //            Toast.makeText(getApplicationContext(), "music_pref = false", Toast.LENGTH_SHORT).show();
@@ -39,40 +81,14 @@ public class HomeActivity extends AppCompatActivity {
             //if music_pref is true, autoplay music when returning from a video activity
             startService(new Intent(getApplicationContext(), MusicService.class));
         }
-
-        MuteIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mute on click of btn; display mute icon (click to play); current status is play
-                stopService(new Intent(getApplicationContext(), MusicService.class));
-                storeMusicPref(false);
-
-                //update UI
-                PlayIcon.setVisibility(View.VISIBLE);
-                MuteIcon.setVisibility(View.GONE);
-            }
-        });
-
-        PlayIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startService(new Intent(getApplicationContext(), MusicService.class));
-                storeMusicPref(true);
-
-                //update UI
-                MuteIcon.setVisibility(View.VISIBLE);
-                PlayIcon.setVisibility(View.GONE);
-            }
-        });
     }
 
-
-    //music management
     private void storeMusicPref(boolean pref) {
         SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("music",pref);
         editor.apply();
+
 //        Toast.makeText(getApplicationContext(), "music_pref stored", Toast.LENGTH_SHORT).show();
     }
 

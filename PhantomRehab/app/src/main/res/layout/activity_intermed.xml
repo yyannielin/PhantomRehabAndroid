@@ -87,7 +87,7 @@
             android:id="@+id/volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_float"
+            android:src="@drawable/volume_float_mute"
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
@@ -98,7 +98,7 @@
             android:id="@+id/mute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_float_mute"
+            android:src="@drawable/volume_float"
 
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"

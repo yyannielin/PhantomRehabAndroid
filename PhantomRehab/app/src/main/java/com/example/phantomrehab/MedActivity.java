@@ -36,7 +36,7 @@ public class MedActivity  extends AppCompatActivity {
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="inpok4MKVLM";
+                String videoId="L3-SlMJHrms"; //Chronic pain meditation | Natural Pain Relief | Relaxation for Pain
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
@@ -46,7 +46,7 @@ public class MedActivity  extends AppCompatActivity {
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="ZToicYcHIOU";
+                String videoId="Agb8wtAN8qc"; //Easing Pain - Guided Imagery - Relaxation Techniques
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
@@ -56,7 +56,7 @@ public class MedActivity  extends AppCompatActivity {
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="d4S4twjeWTs";
+                String videoId="_7rPk25nHEY"; //Cells healing the body - Free from Illness, pain and disease - Guided meditation
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });

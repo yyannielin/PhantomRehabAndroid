@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class BeginnerMain extends AppCompatActivity {
 
@@ -132,6 +133,36 @@ public class BeginnerMain extends AppCompatActivity {
         phone = loadRoot();
         reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone);
 
+        //image randomization
+
+//        Integer[] finalImageSet = new Integer[10];
+//        Integer[] initialSet = {
+//                //R.drawable.back1,
+//                R.drawable.back2,
+//                R.drawable.back4,
+//                R.drawable.back5,
+//                R.drawable.back6,
+//                R.drawable.back7,
+//                R.drawable.back8,
+//                R.drawable.back9,
+//                R.drawable.back10,
+//                R.drawable.elbow1,
+//                R.drawable.elbow2,
+//                R.drawable.elbow3,
+//                R.drawable.foot1,
+//                R.drawable.foot2,
+//                R.drawable.foot3,
+//                R.drawable.foot4,
+//
+//                //placeholder
+//                R.drawable.foot4};
+//
+//        Random generator = new Random();
+//        int randomIndex = generator.nextInt(initialSet.length);
+//
+//        for (int i=0; i<10; i++){
+//        finalImageSet[i] = initialSet[randomIndex]; }
+
         //stopwatch control
         Show = getStopwatchVar();
         StopwatchBar = findViewById(R.id.stopwatch);
@@ -172,20 +203,44 @@ public class BeginnerMain extends AppCompatActivity {
         });
 
         //manage music
-        MuteIcon = findViewById(R.id.mute);
+        ImageView PlayIcon, MuteIcon;
+        MuteIcon = findViewById(R.id.mute); //click to mute
         PlayIcon = findViewById(R.id.volume);
+
+        if (!getMusicPref()) {
+            //update UI
+//            Toast.makeText(getApplicationContext(), "music_pref = false", Toast.LENGTH_SHORT).show();
+
+            MuteIcon.setVisibility(View.GONE);
+            PlayIcon.setVisibility(View.VISIBLE);
+        }
+        else {
+            //if music_pref is true, autoplay music when returning from a video activity
+            startService(new Intent(getApplicationContext(), MusicService.class));
+        }
 
         MuteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mute();
+                //mute on click of btn; display mute icon (click to play); current status is play
+                stopService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(false);
+
+                //update UI
+                PlayIcon.setVisibility(View.VISIBLE);
+                MuteIcon.setVisibility(View.GONE);
             }
         });
 
         PlayIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                play();
+                startService(new Intent(getApplicationContext(), MusicService.class));
+                storeMusicPref(true);
+
+                //update UI
+                MuteIcon.setVisibility(View.VISIBLE);
+                PlayIcon.setVisibility(View.GONE);
             }
         });
     }
@@ -224,7 +279,7 @@ public class BeginnerMain extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent start = new Intent(getApplicationContext(), BeginnerPass.class);
+                Intent start = new Intent(getApplicationContext(), BeginnerFinish.class);
                 startActivity(start);
 
 //                if (POF == 1){
@@ -547,7 +602,7 @@ public class BeginnerMain extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(), EditProfile.class));
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 
     public void toProgress(View view) {
@@ -583,4 +638,19 @@ public class BeginnerMain extends AppCompatActivity {
         MuteIcon.setVisibility(View.VISIBLE);
         PlayIcon.setVisibility(View.INVISIBLE);
     }
+
+    //music management
+    private void storeMusicPref(boolean pref) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("music",pref);
+        editor.apply();
+//        Toast.makeText(getApplicationContext(), "music_pref stored", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean getMusicPref(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("music", true);
+    }
+
 }

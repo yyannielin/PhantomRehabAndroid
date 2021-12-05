@@ -2,6 +2,8 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,10 +42,20 @@ public class SignupActivity extends AppCompatActivity {
 
     private String hashed_pw;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        //color management
+        TextView navbar = findViewById(R.id.navbar);
+        SignUp = findViewById(R.id.btn_signup);
+
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+            SignUp.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+        }
 
         //initialize variables
         Username = findViewById(R.id.enter_username);
@@ -50,7 +63,7 @@ public class SignupActivity extends AppCompatActivity {
         Email = findViewById(R.id.enter_email);
         Password = findViewById(R.id.enter_pw);
         RePassword = findViewById(R.id.confirm_pw);
-        SignUp = findViewById(R.id.btn_signup);
+//        SignUp = findViewById(R.id.btn_signup);
 
 
         //register the account in firebase
@@ -224,6 +237,13 @@ public class SignupActivity extends AppCompatActivity {
     private boolean getMusicPref(){
         SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
         return sharedPreferences.getBoolean("music", true);
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -22,6 +22,8 @@
 
     <TextView
         android:id="@+id/ttl"
+        android:layout_below="@+id/navbar"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -35,9 +37,12 @@
         android:textSize="27sp" />
 
     <RelativeLayout
+        android:id="@+id/color_blk1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_below="@+id/ttl"
+        android:layout_centerHorizontal="true"
         >
         
         <ImageView
@@ -64,6 +69,9 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/color_blk2"
+        android:layout_below="@+id/color_blk1"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -93,19 +101,46 @@
 
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/btn_begin"
+        android:layout_width="230dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/color_blk2"
+
+        android:layout_marginTop="55dp"
+        android:background="@drawable/bg_input"
+        android:fontFamily="@font/raleway"
+
+        android:includeFontPadding="false"
+
+        android:text="@string/ret"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:backgroundTint="@color/grey_secondary"
+        app:cornerRadius="35dp"
+
+        android:onClick="ret"
+        />
+
     <RelativeLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tabbar"
+        android:layout_marginBottom="50dp"
+        >
 
         <ImageView
             android:id="@+id/volume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_up"
+            android:src="@drawable/volume_float_mute"
 
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"
+            android:layout_marginEnd="20dp"
             android:visibility="invisible"
             />
 
@@ -113,13 +148,77 @@
             android:id="@+id/mute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/volume_mute"
+            android:src="@drawable/volume_float"
 
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:background="@color/grey_secondary"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_toStartOf="@+id/therapy"
+            android:layout_marginEnd="25dp"
+
+            android:onClick="toHome"
+            />
+
+        <ImageView
+            android:id="@+id/therapy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/therapy"
+            android:layout_toStartOf="@+id/progress"
+            android:layout_marginEnd="16dp"
+
+            android:onClick="toGMI"
+            />
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/process"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="toProgress"
+            />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile"
+            android:layout_toEndOf="@+id/progress"
+            android:layout_marginStart="22dp"
+
+            android:onClick="toProfile"
+            />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings_fill"
+            android:layout_toEndOf="@+id/profile"
+            android:layout_marginStart="24dp"
+
+            android:onClick="toSettings"
             />
 
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

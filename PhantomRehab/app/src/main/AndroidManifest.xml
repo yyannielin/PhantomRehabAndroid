@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.phantomrehab">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -37,9 +38,9 @@
         <activity android:name=".FAQsActivity"/>
 
         <activity android:name=".SettingsActivity"/>
-        <activity android:name=".LangActivity"/>
+<!--        <activity android:name=".LangActivity"/>-->
         <activity android:name=".ColorActivity"/>
-        <activity android:name=".TextSizeActivity"/>
+<!--        <activity android:name=".TextSizeActivity"/>-->
 
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".ProfileVerification"/>

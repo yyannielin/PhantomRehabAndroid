@@ -2,12 +2,16 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,13 +29,23 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
     private Button Beginner, Intermed, Hard, IntermedLock, HardLock;
     private ImageView PlayIcon, MuteIcon;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
 
-        //initialize variables
+        //color management
+        TextView navbar = findViewById(R.id.navbar);
         Beginner = findViewById(R.id.btn_beginner);
+
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+            Beginner.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+        }
+
+        //initialize variables
+//        Beginner = findViewById(R.id.btn_beginner);
         Intermed = findViewById(R.id.intermed_unlock);
         IntermedLock = findViewById(R.id.intermed_lock);
         Hard = findViewById(R.id.hard_unlock);
@@ -195,5 +209,12 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
         return root;
     }
 
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
+    }
 }
 

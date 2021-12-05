@@ -2,15 +2,19 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,14 +31,23 @@ public class EditPassword extends AppCompatActivity {
 
     String s_email, s_new_pw, s_re_pw;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_password);
 
+        //color management
+        TextView navbar = findViewById(R.id.navbar);
+        update = findViewById(R.id.btn_update);
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+            update.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+        }
+
         new_pw = findViewById(R.id.et_new_pw);
         re_pw = findViewById(R.id.et_re_pw);
-        update = findViewById(R.id.btn_update);
+//        update = findViewById(R.id.btn_update);
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +151,7 @@ public class EditPassword extends AppCompatActivity {
 
     //tab bar control
     public void toProfile(View view) {
-        startActivity(new Intent(getApplicationContext(), EditProfile.class));
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
     }
 
     public void toProgress(View view) {
@@ -169,5 +182,13 @@ public class EditPassword extends AppCompatActivity {
     private boolean getMusicPref(){
         SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
         return sharedPreferences.getBoolean("music", true);
+    }
+
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }

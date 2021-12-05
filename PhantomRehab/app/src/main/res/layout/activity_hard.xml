@@ -203,7 +203,7 @@
                 android:src="@drawable/info_circle"
 
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="131dp"
+                android:layout_marginEnd="70dp"
 
                 android:onClick="toInfo"
                 />
@@ -212,10 +212,10 @@
                 android:id="@+id/volume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/volume_up"
+                android:src="@drawable/volume_mute"
 
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="83dp"
+                android:layout_marginEnd="20dp"
                 android:visibility="invisible"
                 />
 
@@ -223,21 +223,10 @@
                 android:id="@+id/mute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/volume_mute"
+                android:src="@drawable/volume_up"
 
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="83dp"
-                />
-
-            <ImageView
-                android:id="@+id/help"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/lightbulb"
-                android:layout_centerHorizontal="true"
-
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="20dp"
                 />
 
         </RelativeLayout>

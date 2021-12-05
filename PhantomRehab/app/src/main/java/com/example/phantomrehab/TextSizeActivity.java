@@ -1,6 +1,7 @@
 package com.example.phantomrehab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +20,12 @@ public class TextSizeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_textsize);
+
+        //color management
+//        TextView navbar = findViewById(R.id.navbar);
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+        }
 
         textSize = findViewById(R.id.title);
         navbar = findViewById(R.id.navbar);
@@ -75,6 +82,13 @@ public class TextSizeActivity extends AppCompatActivity {
 
     public void toSettings(View view) {
         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }
 

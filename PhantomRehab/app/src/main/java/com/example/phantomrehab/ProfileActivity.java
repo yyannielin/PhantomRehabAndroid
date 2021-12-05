@@ -26,6 +26,12 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profile);
 
+        //color management
+        TextView navbar = findViewById(R.id.navbar);
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            navbar.setBackgroundColor(getColor());
+        }
+
         tvUsername = findViewById(R.id.enter_username);
         tvPhone = findViewById(R.id.enter_phone);
         tvPassword = findViewById(R.id.enter_pw);
@@ -219,5 +225,12 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean getMusicPref(){
         SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
         return sharedPreferences.getBoolean("music", true);
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }

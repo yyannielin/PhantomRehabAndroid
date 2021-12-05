@@ -24,7 +24,11 @@
         android:textColor="@color/black"
         android:textSize="27sp" />
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
         android:id="@+id/switch_reminder"
         android:layout_width="match_parent"
         android:layout_height="65dp"
@@ -37,6 +41,37 @@
         android:text="@string/reminder"
         android:textColor="@color/black"
         android:textSize="22sp" />
+
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_float_mute"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:visibility="invisible"
+                />
+
+            <ImageView
+                android:id="@+id/mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/volume_float"
+
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/laterality_reminder"
@@ -83,6 +118,8 @@
         android:text="@string/select_time"
         android:textColor="@color/black"
         android:textSize="12sp"
+
+        android:onClick="selectTime"
         />
 
     <TextView
@@ -169,6 +206,8 @@
         android:text="@string/select_time"
         android:textColor="@color/black"
         android:textSize="12sp"
+
+        android:onClick="motSelectTime"
         />
 
     <TextView
@@ -188,8 +227,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
 
-        android:onClick="setAlarm" />
-
+        android:onClick="motSetAlarm" />
 
     <TextView
         android:id="@+id/motor_cancel_alarm"
@@ -207,7 +245,7 @@
         android:textColor="@color/blue_link"
         android:textSize="12sp"
 
-        android:onClick="cancelAlarm"
+        android:onClick="motCancelAlarm"
         />
 
     <TextView
@@ -255,6 +293,8 @@
         android:text="@string/select_time"
         android:textColor="@color/black"
         android:textSize="12sp"
+
+        android:onClick="mirSelectTime"
         />
 
     <TextView
@@ -274,7 +314,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
 
-        android:onClick="setAlarm" />
+        android:onClick="mirSetAlarm" />
 
 
     <TextView
@@ -293,7 +333,7 @@
         android:textColor="@color/blue_link"
         android:textSize="12sp"
 
-        android:onClick="cancelAlarm"
+        android:onClick="mirCancelAlarm"
         />
 
 </LinearLayout>
