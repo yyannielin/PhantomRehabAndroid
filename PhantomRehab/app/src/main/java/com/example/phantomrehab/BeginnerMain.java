@@ -51,14 +51,14 @@ public class BeginnerMain extends AppCompatActivity {
 
     //display images
 
-    //Random r;
     ImageView imageView;
     TextView left, right, show_score;
 
     int score = 0;
 
-    Integer[] imageSet1 = {
-            //R.drawable.back1,
+    Integer[] finalImageSet = new Integer[16];
+    Integer[] initialSet = {
+//                R.drawable.back1,
             R.drawable.back2,
             R.drawable.back4,
             R.drawable.back5,
@@ -74,18 +74,6 @@ public class BeginnerMain extends AppCompatActivity {
             R.drawable.foot2,
             R.drawable.foot3,
             R.drawable.foot4,
-
-            //placeholder
-            R.drawable.foot4,
-    };
-
-    char[] answerSet1 = {
-            'R', 'R', 'R', 'R', 'R',
-            'R', 'R', 'R', 'R', 'R',
-            'R', 'R', 'R', 'R', 'R', 'R'
-    };
-
-    Integer[] imageSet2 = {
             R.drawable.foot5,
             R.drawable.hand1,
             R.drawable.hand2,
@@ -102,9 +90,6 @@ public class BeginnerMain extends AppCompatActivity {
             R.drawable.hand13,
             R.drawable.knee1,
             R.drawable.neck1,
-    };
-
-    Integer[] imageSet3 = {
             R.drawable.neck2,
             R.drawable.neck3,
             R.drawable.neck4,
@@ -119,10 +104,48 @@ public class BeginnerMain extends AppCompatActivity {
             R.drawable.shoulder6,
             R.drawable.shoulder7,
             R.drawable.shoulder8,
-            R.drawable.shoulder9
+            R.drawable.shoulder9,
+            R.drawable.image_1,
+            R.drawable.image__2_,
+            R.drawable.image__3_,
+            R.drawable.image__4_,
+            R.drawable.image__5_,
+            R.drawable.image__6_,
+            R.drawable.image__7_,
+            R.drawable.image__8_,
+            R.drawable.image__9_,
+            R.drawable.image__10_,
+            R.drawable.image__11_,
+            R.drawable.image__12_,
+            R.drawable.image__13_,
+            R.drawable.image__14_,
+            R.drawable.image__15_,
+            R.drawable.image__16_,
+            R.drawable.image__17_,
+            R.drawable.image__18_,
+            R.drawable.image__19_,
+            R.drawable.image__20_,
+            R.drawable.image__21_,
+            R.drawable.image__22_,
+            R.drawable.image__23_,
+            R.drawable.image__24_,
+            R.drawable.image__25_,
+            R.drawable.image_26,
+            R.drawable.image_27,
+            R.drawable.image_28,
+            R.drawable.image_29,
+            R.drawable.image_30,
+            R.drawable.image_31,
+            R.drawable.image_32,
     };
 
-    int pickedImage = 0, lastPicked = 0;
+    char[] answerSet1 = {
+            'R', 'R', 'R', 'R', 'R',
+            'R', 'R', 'R', 'R', 'R',
+            'R', 'R', 'R', 'R', 'R', 'R'
+    };
+
+    int pickedImage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,33 +158,17 @@ public class BeginnerMain extends AppCompatActivity {
 
         //image randomization
 
-//        Integer[] finalImageSet = new Integer[10];
-//        Integer[] initialSet = {
-//                //R.drawable.back1,
-//                R.drawable.back2,
-//                R.drawable.back4,
-//                R.drawable.back5,
-//                R.drawable.back6,
-//                R.drawable.back7,
-//                R.drawable.back8,
-//                R.drawable.back9,
-//                R.drawable.back10,
-//                R.drawable.elbow1,
-//                R.drawable.elbow2,
-//                R.drawable.elbow3,
-//                R.drawable.foot1,
-//                R.drawable.foot2,
-//                R.drawable.foot3,
-//                R.drawable.foot4,
-//
-//                //placeholder
-//                R.drawable.foot4};
-//
-//        Random generator = new Random();
-//        int randomIndex = generator.nextInt(initialSet.length);
-//
-//        for (int i=0; i<10; i++){
-//        finalImageSet[i] = initialSet[randomIndex]; }
+        Random generator = new Random();
+
+        for (int i=0; i<finalImageSet.length-1; i++){
+            int randomIndex = generator.nextInt(initialSet.length);
+            finalImageSet[i] = initialSet[randomIndex];
+
+            if (i==finalImageSet.length-2){ // last picture in the array is a placeholder
+                i++;
+                finalImageSet[i] = initialSet[randomIndex];
+            }
+        }
 
         //stopwatch control
         Show = getStopwatchVar();
@@ -409,7 +416,7 @@ public class BeginnerMain extends AppCompatActivity {
     private int passOrFail() {
         //returns 1 if pass, 0 if fail
 
-        int count = imageSet1.length;
+        int count = finalImageSet.length;
         double time_thresh = count*1.8*1000; //unit: millisecond
         double score_thresh = count*0.9;
 
@@ -563,10 +570,10 @@ public class BeginnerMain extends AppCompatActivity {
         countLeft();
 
         //update image from image-set
-        imageView.setImageResource(imageSet1[pickedImage]);
+        imageView.setImageResource(finalImageSet[pickedImage]);
 
         //image-set finished
-        if (pickedImage == imageSet1.length-1) {
+        if (pickedImage == finalImageSet.length-1) {
             done();
         }
 
@@ -580,10 +587,10 @@ public class BeginnerMain extends AppCompatActivity {
         countRight();
 
         //update image from image-set
-        imageView.setImageResource(imageSet1[pickedImage]);
+        imageView.setImageResource(finalImageSet[pickedImage]);
 
         //image-set finished
-        if (pickedImage == imageSet1.length-1) {
+        if (pickedImage == finalImageSet.length-1) {
             done();
         }
 
