@@ -43,6 +43,11 @@ public class EditPassword extends AppCompatActivity {
         if (getColor() != getResources().getColor(R.color.blue_theme)){
             navbar.setBackgroundColor(getColor());
             update.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+
+            ImageView tabbar_icon = findViewById(R.id.profile);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.profile_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.profile_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.profile_green);}
         }
 
         new_pw = findViewById(R.id.et_new_pw);

@@ -2,10 +2,12 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,9 +22,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         //color management
-        TextView navbar = findViewById(R.id.navbar);
         if (getColor() != getResources().getColor(R.color.blue_theme)){
+            TextView navbar = findViewById(R.id.navbar);
             navbar.setBackgroundColor(getColor());
+
+            ImageView tabbar_icon = findViewById(R.id.home);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.home_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.home_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.home_green);}
         }
 
         // music control

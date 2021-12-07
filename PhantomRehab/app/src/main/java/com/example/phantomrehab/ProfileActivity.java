@@ -30,6 +30,11 @@ public class ProfileActivity extends AppCompatActivity {
         TextView navbar = findViewById(R.id.navbar);
         if (getColor() != getResources().getColor(R.color.blue_theme)){
             navbar.setBackgroundColor(getColor());
+
+            ImageView tabbar_icon = findViewById(R.id.profile);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.profile_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.profile_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.profile_green);}
         }
 
         tvUsername = findViewById(R.id.enter_username);

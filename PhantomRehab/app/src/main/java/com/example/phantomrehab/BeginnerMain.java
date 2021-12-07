@@ -2,6 +2,7 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -10,6 +11,7 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,92 +60,141 @@ public class BeginnerMain extends AppCompatActivity {
 
     Integer[] finalImageSet = new Integer[16];
     Integer[] initialSet = {
-//                R.drawable.back1,
-            R.drawable.back2,
-            R.drawable.back4,
-            R.drawable.back5,
-            R.drawable.back6,
-            R.drawable.back7,
-            R.drawable.back8,
-            R.drawable.back9,
-            R.drawable.back10,
-            R.drawable.elbow1,
-            R.drawable.elbow2,
-            R.drawable.elbow3,
-            R.drawable.foot1,
-            R.drawable.foot2,
-            R.drawable.foot3,
-            R.drawable.foot4,
-            R.drawable.foot5,
-            R.drawable.hand1,
-            R.drawable.hand2,
-            R.drawable.hand3,
-            R.drawable.hand4,
-            R.drawable.hand5,
-            R.drawable.hand6,
-            R.drawable.hand7,
-            R.drawable.hand8,
-            R.drawable.hand9,
-            R.drawable.hand10,
-            R.drawable.hand11,
-            R.drawable.hand12,
-            R.drawable.hand13,
-            R.drawable.knee1,
-            R.drawable.neck1,
-            R.drawable.neck2,
-            R.drawable.neck3,
-            R.drawable.neck4,
-            R.drawable.neck5,
-            R.drawable.neck6,
-            R.drawable.neck7,
-            R.drawable.shoulder1,
-            R.drawable.shoulder2,
-            R.drawable.shoulder3,
-            R.drawable.shoulder4,
-            R.drawable.shoulder5,
-            R.drawable.shoulder6,
-            R.drawable.shoulder7,
-            R.drawable.shoulder8,
-            R.drawable.shoulder9,
-            R.drawable.image_1,
-            R.drawable.image__2_,
-            R.drawable.image__3_,
-            R.drawable.image__4_,
-            R.drawable.image__5_,
-            R.drawable.image__6_,
-            R.drawable.image__7_,
-            R.drawable.image__8_,
-            R.drawable.image__9_,
-            R.drawable.image__10_,
-            R.drawable.image__11_,
-            R.drawable.image__12_,
-            R.drawable.image__13_,
-            R.drawable.image__14_,
-            R.drawable.image__15_,
-            R.drawable.image__16_,
-            R.drawable.image__17_,
-            R.drawable.image__18_,
-            R.drawable.image__19_,
-            R.drawable.image__20_,
-            R.drawable.image__21_,
-            R.drawable.image__22_,
-            R.drawable.image__23_,
-            R.drawable.image__24_,
-            R.drawable.image__25_,
-            R.drawable.image_26,
-            R.drawable.image_27,
-            R.drawable.image_28,
-            R.drawable.image_29,
-            R.drawable.image_30,
-            R.drawable.image_31,
-            R.drawable.image_32,
+            R.drawable.back1, //L
+            R.drawable.back2, //L
+            R.drawable.back4, //R
+            R.drawable.back5, //R
+            R.drawable.back6, //R
+
+            R.drawable.back7, //L
+            R.drawable.back8, //R
+            R.drawable.back9, //L
+            R.drawable.back10, //R
+            R.drawable.elbow1, //L
+
+            R.drawable.elbow2, //L
+            R.drawable.elbow3, //R
+            R.drawable.foot1, //R
+            R.drawable.foot2, //R
+            R.drawable.foot3, //R
+
+            R.drawable.foot4, //R
+            R.drawable.foot5, //L
+            R.drawable.hand1, //L
+            R.drawable.hand2, //R
+            R.drawable.hand3, //L
+
+            R.drawable.hand4, //R
+            R.drawable.hand5, //L
+            R.drawable.hand6, //L
+            R.drawable.hand7, //R
+            R.drawable.hand8, //L
+
+            R.drawable.hand9, //L
+            R.drawable.hand10, //L
+            R.drawable.hand11, //L
+            R.drawable.hand12, //L
+            R.drawable.hand13, //R
+
+            R.drawable.knee1, //R
+            R.drawable.neck1, //R
+            R.drawable.neck2, //L
+            R.drawable.neck3, //R
+            R.drawable.neck4, //R
+
+            R.drawable.neck5, //R
+            R.drawable.neck6, //R
+            R.drawable.neck7, //L
+            R.drawable.shoulder1, //L
+            R.drawable.shoulder2, //R
+
+            R.drawable.shoulder3, //L
+            R.drawable.shoulder4, //L
+            R.drawable.shoulder5, //L
+            R.drawable.shoulder6, //R
+            R.drawable.shoulder7, //L
+
+            R.drawable.shoulder8, //R
+            R.drawable.shoulder9, //L
+            R.drawable.image_1, //R
+            R.drawable.image__2_, //R
+            R.drawable.image__3_, //R
+
+            R.drawable.image__4_, //R
+            R.drawable.image__5_, //L
+            R.drawable.image__6_, //R
+            R.drawable.image__7_, //R
+            R.drawable.image__8_, //R
+
+            R.drawable.image__9_, //R
+            R.drawable.image__10_, //R
+            R.drawable.image__11_, //L
+            R.drawable.image__12_, //R
+            R.drawable.image__13_, //L
+
+            R.drawable.image__14_, //L
+            R.drawable.image__15_, //L
+            R.drawable.image__16_, //L
+            R.drawable.image__17_, //R
+            R.drawable.image__18_, //R
+
+            R.drawable.image__19_, //R
+            R.drawable.image__20_, //L
+            R.drawable.image__21_, //R
+            R.drawable.image__22_, //R
+            R.drawable.image__23_, //L
+
+            R.drawable.image__24_, //R
+            R.drawable.image__25_, //R
+            R.drawable.image_26, //R
+            R.drawable.image_27, //L
+            R.drawable.image_28, //L
+
+            R.drawable.image_29, //L
+            R.drawable.image_30, //L
+            R.drawable.image_31, //R
+            R.drawable.image_32, //L
     };
 
     char[] answerSet1 = {
-            'R', 'R', 'R', 'R', 'R',
-            'R', 'R', 'R', 'R', 'R',
-            'R', 'R', 'R', 'R', 'R', 'R'
+            'L', 'L', 'R', 'R', 'R',
+            'L', 'R', 'L', 'R', 'L',
+            'L', 'R', 'R', 'R', 'R',
+            'R', 'L', 'L', 'R', 'L',
+            'R', 'L', 'L', 'R', 'L',
+            'L', 'L', 'L', 'L', 'R',
+            'R', 'R', 'L', 'R', 'L',
+            'R', 'R', 'L', 'L', 'R',
+            'L', 'L', 'L', 'R', 'L',
+            'R', 'L', 'R', 'R', 'R',
+            'R', 'L', 'R', 'R', 'R',
+            'R', 'R', 'L', 'R', 'L',
+            'L', 'L', 'L', 'R', 'R',
+            'R', 'L', 'R', 'R', 'L',
+            'R', 'R', 'R', 'L', 'L',
+            'L', 'L', 'R', 'L'
     };
+
+//    char[] answerSet1 = {
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R', 'R',
+//            'R', 'R', 'R', 'R'
+//    };
+
+    Map<Integer, Integer> map;
 
     int pickedImage = 0;
 
@@ -152,11 +203,49 @@ public class BeginnerMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginner);
 
+        //color management
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            TextView navbar = findViewById(R.id.navbar);
+            navbar.setBackgroundColor(getColor());
+
+            chronometer = findViewById(R.id.chronometer);
+            chronometer.setTextColor(getColor());
+
+            start = findViewById(R.id.start);
+            start.setTextColor(getColor());
+
+            hide = findViewById(R.id.hide);
+            hide.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
+
+            show = findViewById(R.id.show);
+            show.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
+
+            TextView left = findViewById(R.id.btn_left);
+            TextView right = findViewById(R.id.btn_right);
+            ImageView tabbar_icon = findViewById(R.id.therapy);
+
+            if (getColor() == getResources().getColor(R.color.purple_theme)){
+                tabbar_icon.setImageResource(R.drawable.therapy_purple);
+                left.setBackgroundColor(getResources().getColor(R.color.purple_theme));
+                right.setBackgroundColor(getResources().getColor(R.color.purple_tertiary));
+            }
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){
+                tabbar_icon.setImageResource(R.drawable.therapy_teal);
+                left.setBackgroundColor(getResources().getColor(R.color.teal_theme));
+                right.setBackgroundColor(getResources().getColor(R.color.teal_tertiary));
+            }
+            else if (getColor() == getResources().getColor(R.color.green_theme)){
+                tabbar_icon.setImageResource(R.drawable.therapy_green);
+                left.setBackgroundColor(getResources().getColor(R.color.green_theme));
+                right.setBackgroundColor(getResources().getColor(R.color.green_tertiary));
+            }
+        }
+
         //database
         phone = loadRoot();
         reff = FirebaseDatabase.getInstance().getReference().child("users").child(phone);
 
-        //image randomization
+        //image randomization and answer key
 
         Random generator = new Random();
 
@@ -170,10 +259,15 @@ public class BeginnerMain extends AppCompatActivity {
             }
         }
 
+        map = new HashMap<>();
+        for (int i=0; i<answerSet1.length; i++) {
+            map.put(initialSet[i], (int) answerSet1[i]);
+        }
+
         //stopwatch control
         Show = getStopwatchVar();
         StopwatchBar = findViewById(R.id.stopwatch);
-        stopwatchUI();
+//        stopwatchUI();
 
         chronometer = findViewById(R.id.chronometer);
         start = findViewById(R.id.start);
@@ -196,7 +290,7 @@ public class BeginnerMain extends AppCompatActivity {
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firstImage();
+                firstImage(); //to start stopwatch
                 nextImageFromLeft();
             }
         });
@@ -257,10 +351,24 @@ public class BeginnerMain extends AppCompatActivity {
     private void firstImage() {
         if (pickedImage == 0) {
             startStopwatch();
+            if(!Show){
+                chronometer.setVisibility(View.INVISIBLE);
+                start.setVisibility(View.VISIBLE);
+                start.setText(R.string.hide_stopwatch);
+
+                hide.setVisibility(View.INVISIBLE);
+                show.setVisibility(View.VISIBLE);
+            }
         }
     }
 
     private void done() {
+
+        //display chronometer
+        chronometer.setVisibility(View.VISIBLE);
+        start.setVisibility(View.INVISIBLE);
+        hide.setVisibility(View.VISIBLE);
+        show.setVisibility(View.INVISIBLE);
 
         //show score and time
         String score_formatted = getString(R.string.score, score);
@@ -474,10 +582,18 @@ public class BeginnerMain extends AppCompatActivity {
 
 
     //stopwatch control
-    private void stopwatchUI() {
-        if (Show) StopwatchBar.setVisibility(View.VISIBLE);
-        else {StopwatchBar.setVisibility(View.INVISIBLE);}
-    }
+//    private void stopwatchUI() {
+//        if (Show) StopwatchBar.setVisibility(View.VISIBLE);
+//        else {
+//            StopwatchBar.setVisibility(View.VISIBLE);
+////            chronometer.setVisibility(View.INVISIBLE);
+////            start.setVisibility(View.VISIBLE);
+////            start.setText(R.string.hide_stopwatch);
+////
+////            hide.setVisibility(View.INVISIBLE);
+////            show.setVisibility(View.VISIBLE);
+//            }
+//    }
 
     private boolean getStopwatchVar(){
         SharedPreferences sharedPreferences = getSharedPreferences("Stopwatch", MODE_PRIVATE);
@@ -492,6 +608,8 @@ public class BeginnerMain extends AppCompatActivity {
             start.setVisibility(View.INVISIBLE);
 //            pause.setVisibility(View.VISIBLE);
 //            stop.setVisibility(View.VISIBLE);
+
+            Toast.makeText(getApplicationContext(), "stopwatch started", Toast.LENGTH_SHORT).show();
 
             chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
             chronometer.start();
@@ -599,12 +717,20 @@ public class BeginnerMain extends AppCompatActivity {
     }
 
     private void countLeft() {
-        if (answerSet1[pickedImage] == 'L') score++;
+//        if (answerSet1[pickedImage] == 'L') score++;
+        if(pickedImage>0){
+            if (map.get(finalImageSet[pickedImage-1]) == 'L')
+            score++;
+        }
     }
 
     private void countRight() {
-        if (answerSet1[pickedImage] == 'R') score++;
-    }
+//        if (answerSet1[pickedImage] == 'R') score++;
+        if (pickedImage == 0) score++;
+        if(pickedImage>0){
+            if (map.get(finalImageSet[pickedImage-1]) == 'R')
+                score++;
+        }    }
 
 
     //tab bar control
@@ -660,4 +786,11 @@ public class BeginnerMain extends AppCompatActivity {
         return sharedPreferences.getBoolean("music", true);
     }
 
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
+    }
 }

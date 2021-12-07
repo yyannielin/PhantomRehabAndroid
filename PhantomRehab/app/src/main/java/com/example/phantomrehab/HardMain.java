@@ -4,7 +4,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.MediaStore;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -54,10 +58,39 @@ public class HardMain extends AppCompatActivity {
     ImageView pause, stop;
     TextView start;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hard);
+
+        //color management
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            TextView navbar = findViewById(R.id.navbar);
+            navbar.setBackgroundColor(getColor());
+
+            Button btn = findViewById(R.id.btn_done);
+            btn.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+
+            chronometer = findViewById(R.id.chronometer);
+            start = findViewById(R.id.start);
+            TextView progress = findViewById(R.id.save_progress);
+            pause = findViewById(R.id.pause);
+            stop = findViewById(R.id.stop);
+
+            chronometer.setTextColor(getColor());
+            start.setTextColor(getColor());
+            progress.setTextColor(getColor());
+
+            pause.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
+            stop.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
+
+
+//            ImageView tabbar_icon = findViewById(R.id.home);
+//            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.home_purple);}
+//            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.home_teal);}
+//            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.home_green);}
+        }
 
         //level control
         today = getToday();
@@ -382,6 +415,13 @@ public class HardMain extends AppCompatActivity {
     private boolean getMusicPref(){
         SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
         return sharedPreferences.getBoolean("music", true);
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 
 }

@@ -42,6 +42,11 @@ public class ChooseLevel extends AppCompatActivity implements View.OnClickListen
         if (getColor() != getResources().getColor(R.color.blue_theme)){
             navbar.setBackgroundColor(getColor());
             Beginner.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+
+            ImageView tabbar_icon = findViewById(R.id.therapy);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_green);}
         }
 
         //initialize variables

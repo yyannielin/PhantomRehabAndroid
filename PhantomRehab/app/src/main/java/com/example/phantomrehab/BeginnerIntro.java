@@ -2,6 +2,7 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +26,19 @@ public class BeginnerIntro extends AppCompatActivity {
         TextView navbar = findViewById(R.id.navbar);
         if (getColor() != getResources().getColor(R.color.blue_theme)){
             navbar.setBackgroundColor(getColor());
+
+            ImageView tabbar_icon = findViewById(R.id.therapy);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_green);}
+
+            Select = findViewById(R.id.selected);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){
+                Select.setColorFilter(getResources().getColor(R.color.purple_theme), PorterDuff.Mode.SRC_IN); }
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){
+                Select.setColorFilter(getResources().getColor(R.color.teal_theme), PorterDuff.Mode.SRC_IN); }
+            else if (getColor() == getResources().getColor(R.color.green_theme)){
+                Select.setColorFilter(getResources().getColor(R.color.green_theme), PorterDuff.Mode.SRC_IN);}
         }
 
         //stopwatch control

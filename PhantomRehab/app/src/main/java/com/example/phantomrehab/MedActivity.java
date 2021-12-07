@@ -1,8 +1,13 @@
 package com.example.phantomrehab;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +23,25 @@ public class MedActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_med);
+
+        //color management
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            TextView navbar = findViewById(R.id.navbar);
+            navbar.setBackgroundColor(getColor());
+
+            RelativeLayout layout = findViewById(R.id.layout);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){
+                layout.setBackgroundColor(getResources().getColor(R.color.purple_light_bg));}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){
+                layout.setBackgroundColor(getResources().getColor(R.color.teal_light_bg));}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){
+                layout.setBackgroundColor(getResources().getColor(R.color.green_light_bg));}
+
+            ImageView tabbar_icon = findViewById(R.id.home);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.home_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.home_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.home_green);}
+        }
 
         //stop background music
         stopService(new Intent(getApplicationContext(), MusicService.class));
@@ -56,7 +80,7 @@ public class MedActivity  extends AppCompatActivity {
             public void onReady(YouTubePlayer youTubePlayer) {
                 super.onReady(youTubePlayer);
 
-                String videoId="_7rPk25nHEY"; //Cells healing the body - Free from Illness, pain and disease - Guided meditation
+                String videoId="d4S4twjeWTs"; //yoga
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
@@ -86,5 +110,12 @@ public class MedActivity  extends AppCompatActivity {
 
     public void toGMI(View view) {
         startActivity(new Intent(getApplicationContext(),ChooseLevel.class));
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }

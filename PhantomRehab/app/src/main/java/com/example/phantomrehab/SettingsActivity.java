@@ -30,6 +30,11 @@ public class SettingsActivity extends AppCompatActivity {
         if (getColor() != getResources().getColor(R.color.blue_theme)){
             navbar.setBackgroundColor(getColor());
             signOut.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+
+            ImageView tabbar_icon = findViewById(R.id.setting);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.settings_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.settings_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.settings_green);}
         }
 
         FirebaseAuth.getInstance();

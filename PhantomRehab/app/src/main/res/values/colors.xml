@@ -26,9 +26,14 @@
 
 <!--    green theme-->
     <color name="green_theme">#ABC18F</color>
+    <color name="green_tertiary">#CAE3AB</color>
+    <color name="green_light_bg">#D8E5C8</color>
 
     <!--    purple theme-->
-    <color name="purple_theme">#A78FB1</color>
+<!--    <color name="purple_theme">#A78FB1</color>-->
+    <color name="purple_theme">#A997C0</color>
+    <color name="purple_tertiary">#D4C5E7</color>
+    <color name="purple_light_bg">#E6DFEF</color>
 
 
     <!--    text -->

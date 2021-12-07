@@ -2,11 +2,15 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +67,40 @@ public class IntermedVideo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intermed_video);
+
+        //color control
+
+        //color management
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            TextView navbar = findViewById(R.id.navbar);
+            navbar.setBackgroundColor(getColor());
+
+            RelativeLayout layout = findViewById(R.id.layout);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){
+                layout.setBackgroundColor(getResources().getColor(R.color.purple_light_bg));}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){
+                layout.setBackgroundColor(getResources().getColor(R.color.teal_light_bg));}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){
+                layout.setBackgroundColor(getResources().getColor(R.color.green_light_bg));}
+//            layout.setBackgroundColor(getColor());
+
+            chronometer = findViewById(R.id.chronometer);
+            start = findViewById(R.id.start);
+            TextView progress = findViewById(R.id.save_progress);
+            pause = findViewById(R.id.pause);
+            stop = findViewById(R.id.stop);
+
+            chronometer.setTextColor(getColor());
+            start.setTextColor(getColor());
+            progress.setTextColor(getColor());
+            pause.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
+            stop.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
+
+            ImageView tabbar_icon = findViewById(R.id.therapy);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.therapy_green);}
+        }
 
         //get videos
         Video1 = findViewById(R.id.youtube_player_view1);
@@ -473,5 +511,13 @@ public class IntermedVideo extends AppCompatActivity {
 
     public void toGMI(View view) {
         startActivity(new Intent(getApplicationContext(),ChooseLevel.class));
+    }
+
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }

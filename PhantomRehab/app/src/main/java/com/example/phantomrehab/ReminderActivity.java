@@ -36,7 +36,7 @@ public class ReminderActivity extends AppCompatActivity {
     //Initialize variable
     TextView tvTimer, tvTimer2, tvTimer3, confirm1, confirm2, confirm3;
     int tHour, tHour2, tHour3, tMinute, tMinute2, tMinute3;
-    private AlarmManager alarmManager;
+    private AlarmManager alarmManager, alarmManager2, alarmManager3;
     private PendingIntent pendingIntent;
 
     @Override
@@ -266,10 +266,10 @@ public class ReminderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,cal_alarm.getTimeInMillis(), pendingIntent);
+        alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager2.set(AlarmManager.RTC_WAKEUP,cal_alarm.getTimeInMillis(), pendingIntent);
 //        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(),  24*60*60*1000 , pendingIntent); // this is inexact
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager2.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
         Toast.makeText(this, "Reminder set successfully", Toast.LENGTH_SHORT).show();
     }
@@ -278,11 +278,11 @@ public class ReminderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-        if (alarmManager == null){
-            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager2 == null){
+            alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         }
 
-        alarmManager.cancel(pendingIntent);
+        alarmManager2.cancel(pendingIntent);
         Toast.makeText(this, "Alarm cancelled", Toast.LENGTH_SHORT).show();
     }
 
@@ -344,10 +344,10 @@ public class ReminderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,2,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,cal_alarm.getTimeInMillis(), pendingIntent);
+        alarmManager3 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager3.set(AlarmManager.RTC_WAKEUP,cal_alarm.getTimeInMillis(), pendingIntent);
 //        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(),  24*60*60*1000 , pendingIntent); // this is inexact
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager3.setRepeating(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
         Toast.makeText(this, "Reminder set successfully", Toast.LENGTH_SHORT).show();
     }
@@ -356,11 +356,11 @@ public class ReminderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(ReminderActivity.this,2,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-        if (alarmManager == null){
-            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager3 == null){
+            alarmManager3 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         }
 
-        alarmManager.cancel(pendingIntent);
+        alarmManager3.cancel(pendingIntent);
         Toast.makeText(this, "Alarm cancelled", Toast.LENGTH_SHORT).show();
     }
 
@@ -387,34 +387,5 @@ public class ReminderActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-//        //manage music
-//        ImageView PlayIcon, MuteIcon;
-//        MuteIcon = findViewById(R.id.mute);
-//        PlayIcon = findViewById(R.id.volume);
-//
-//        MuteIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                stopService(new Intent(getApplicationContext(), MusicService.class));
-//
-//                //update UI
-//                PlayIcon.setVisibility(View.VISIBLE);
-//                MuteIcon.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        PlayIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startService(new Intent(getApplicationContext(), MusicService.class));
-//
-//                //update UI
-//                MuteIcon.setVisibility(View.VISIBLE);
-//                PlayIcon.setVisibility(View.INVISIBLE);
-//            }
-//        });
 
 

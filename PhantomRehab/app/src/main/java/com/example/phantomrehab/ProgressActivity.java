@@ -2,10 +2,12 @@ package com.example.phantomrehab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,17 @@ public class ProgressActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
+
+        //color management
+        if (getColor() != getResources().getColor(R.color.blue_theme)){
+            TextView navbar = findViewById(R.id.navbar);
+            navbar.setBackgroundColor(getColor());
+
+            ImageView tabbar_icon = findViewById(R.id.progress);
+            if (getColor() == getResources().getColor(R.color.purple_theme)){ tabbar_icon.setImageResource(R.drawable.process_purple);}
+            else if (getColor() == getResources().getColor(R.color.teal_theme)){ tabbar_icon.setImageResource(R.drawable.process_teal);}
+            else if (getColor() == getResources().getColor(R.color.green_theme)){ tabbar_icon.setImageResource(R.drawable.process_green);}
+        }
 
 
         //display progress
@@ -169,5 +182,12 @@ public class ProgressActivity  extends AppCompatActivity {
     private boolean getMusicPref(){
         SharedPreferences sharedPreferences = getSharedPreferences("Music", MODE_PRIVATE);
         return sharedPreferences.getBoolean("music", true);
+    }
+
+    //color management
+    private int getColor(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Color", MODE_PRIVATE);
+        int selectedColor = sharedPreferences.getInt("color", getResources().getColor(R.color.blue_theme));
+        return selectedColor;
     }
 }
