@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth fAuth;
 
     private ImageView PlayIcon, MuteIcon;
-    private TextView SignUp;
+    private TextView SignUp, ForgetPw;
 
     private String UID;
 
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //        Cell = (EditText) findViewById(R.id.enter_phone);
         Password = (EditText) findViewById(R.id.enter_pw);
         SignUp = (TextView) findViewById(R.id.sign_up);
+//        ForgetPw = findViewById(R.id.forget_pw);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -225,6 +226,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    public void forgetPw(View view) {
+        return;
     }
 
 //    private void validateCell(String cell, String user) {

@@ -4,7 +4,7 @@
     <string name="enter_username">Enter username</string>
     <string name="enter_password">Enter password</string>
     <string name="login">Login</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="forget_pw"><u>Forget my password</u></string>
     <string name="sign_up_underline"><u>Sign up</u></string>
     <string name="create_account">Create Account</string>
     <string name="enter_email">Enter email</string>
@@ -23,7 +23,7 @@
     <string name="promt_setup">Please set up your device as instructed.</string>
     <string name="insn"><b>Instructions</b> \n \n
         \u2022 Place your device vertically against a wall or other stable surface. \n
-        \u2022 When you click on “Begin,” the camera will open. Please <u>grant this app permission</u> to access the camera.
+        \u2022 When you click on “Begin,” the camera will open. Please <u>grant this app permission</u> to access the camera. \n
 \u2022 When the camera opens, make sure you can see the non-affected body part entirely, and make sure the affected body part is fully covered and out of view. \n
         \u2022 Complete <b>at least 20 minutes</b> of mirror imagery a day, <b>every day</b>, until you no longer have any symptoms. \n
 \u2022 Start with simple and basic movements before progressing towards more complex and functional movements, as symptoms allow. \n
@@ -50,12 +50,12 @@
     <string name="frequency">Frequency</string>
     <string name="info_section">Info Section</string>
     <string name="laterality_reconstruction">Laterality Reconstruction</string>
-    <string name="lr_content">Targets neurologic connections between the brain and the missing limb by having you identify body images as either left or right.\n \n
-By practicing this technique, your brain uses its movement planning areas to start normalizing messages between the brain and body.\n \n
-Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Try your best to not become frustrated if you are not a pro at this exercise at first. Recovery takes time and is not linear. Go easy on yourself and know that you are working toward progress. :)
-</string>
+    <string name="lr_content">
+  Laterality reconstruction is the first step in GMI training. This practice requires you to identify between left and right sides of the body, effectively calibrating your brain maps sense of direction and orientation.By practicing this technique, your brain uses its movement planning areas to start normalizing messages between your brain and body.
+    </string>
     <string name="graded_motor_imaging">Graded Motor Imaging</string>
-    <string name="gmi_info">The brain has "maps" of the body and when an amputation happens, those maps no longer match the sensory and motor signals from the body. Graded Motor Imagery training techniques cause the brain to “re-think” the pain response that it has been experiencing since the amputation and adopt the image of the healthy hand in place of the injured limb.
+    <string name="gmi_info">
+Mirror Therapy is the final step in GMI training. In this level, the user employs the camera on their phone to act as a mirror, reflecting the unaffected limb in a way that makes the user feel that it’s really the affected limb. Voluntary movements and various sensations are introduced to the non-affected body part, making it appear that these things are happening to both limbs. This stage utilizes cells in the brain known as mirror neurons which allow us to essentially trick our brain into thinking the projected image is really our own.
     </string>
     <string name="done"><b>Done</b></string>
     <string name="enter_your_email">Enter your email</string>
@@ -72,7 +72,7 @@ Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Tr
     <string name="therapy">Therapy</string>
     <string name="no_1">No. 1</string>
 
-    <string name="laterality_intro">In this part, you will … \n \n
+    <string name="laterality_intro">In this part, you will: \n \n
             \u2022 Differentiate between “L” (“Left”) and “R” (“Right”) in under <b>2 seconds</b>. \n \n
         \u2022 Score at least <b>90%</b> for response time AND accuracy <b>for a week</b> to advance to the next level.</string>
 
@@ -107,7 +107,7 @@ Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Tr
     <string name="hide_stopwatch">Keep working!</string>
     <string name="resume_stopwatch">Press to resume the stopwatch</string>
     <string name="resume">Resume</string>
-    <string name="save_my_progress"><u>Save my progress</u></string>
+    <string name="save_my_progress">Save my progress</string>
     <string name="verification_prompt">Please enter the following information to verify your identity.</string>
     <string name="verify">Verify</string>
 
@@ -118,16 +118,30 @@ Keep in mind that the Q&amp;As are not a "test" – they can actually be fun! Tr
     <string name="faq_q5">Q: Where can I get more information?</string>
 
     <string name="faq_a1">
-A: This app provides users with easy to follow instructions on how to use a technique known as Graded Motor Imagery. Graded Motor Imagery is a 3-step process that uses evidence-based research to prime the central nervous system for maximal neuroplasticity, allowing the user to effectively rewire their brain to reduce their unwanted symptoms. The first step in the process is Laterality. This requires the user to identify between a L and a R body part while being timed for efficiency and accuracy. Once this level is mastered, the user can proceed to the next step: Imagined Movements. In this stage, the user is prompted to imagine themselves moving the affected body part in a pain-free way. The movements will start out simple and get progressively more complex as the user is ready to progress. If the user has mastered laterality but finds imagined movements to be painful or symptomatic, there are videos of others doing these movements that can be watched until the user is able to imagine themselves moving without issue. Once the Imagined Movements level has been mastered, the user progresses to the final stage of GMI: Mirror Therapy. In this level, the user employs the camera on their phone to act as a mirror, reflecting the unaffected limb in a way that makes the user feel it’s actually the affected limb. This stage utilizes cells in the brain known as mirror neurons which allow us to essentially trick our brain into thinking the projected image is really our own. Voluntary movements and various sensations are introduced to the non-affected body part, making it appear that these things are happening to both limbs. Once this final level is mastered, the user should be able to move their body in any way they want to without experiencing any of their previous symptoms.
+A: This app provides users with easy-to-follow instructions on how to use a technique called Graded Motor Imagery. Graded Motor Imagery is a 3-step process that uses evidence-based research to prime the central nervous system for maximal neuroplasticity, allowing the user to effectively rewire their brain to reduce their unwanted symptoms.\n\n
+
+The first step in the process is Laterality. This requires the user to identify between a L and a R body part while being timed for efficiency and accuracy. \n\n
+
+Once this level is mastered, the user can proceed to the next step: Imagined Movements. In this stage, the user is prompted to imagine themselves moving the affected body part in a pain-free way. The movements will start out simple and get progressively more complex as the user is ready to progress. If the user has mastered laterality but finds imagined movements to be painful or symptomatic, there are videos of others doing these movements that can be watched until the user is able to imagine themselves moving without issue. \n\n
+
+Once the Imagined Movements level has been mastered, the user progresses to the final stage of GMI: Mirror Therapy. In this level, the user employs the camera on their phone to act as a mirror, reflecting the unaffected limb in a way that makes the user feel that it is really the affected limb. This stage utilizes cells in the brain known as mirror neurons which allow us to essentially trick our brain into thinking the projected image is really our own. Voluntary movements and various sensations are introduced to the non-affected body part, making it appear that these things are happening to both limbs. Once this final level is mastered, the user should be able to move their body in any way they want without experiencing any of their previous symptoms.\n\n
+
+Remember, these techniques should be completed with guidance and supervision of a healthcare professional.
     </string>
     <string name="faq_a2">
-        A: The app can be downloaded by users to aid in proper completion of their sensorimotor exercises. It will follow the principles of Graded Motor Imagery which is an evidence-based technique to create neuroplastic changes in the brain to address chronic pain, phantom limb syndrome, and Chronic Regional Pain Syndrome. It will provide a timer; interactive Q&amp;A for quizzing the patient; watching short clips of body movements; and guided prompts to imagine scenarios, complete sensory exercises, teach body-positive affirmations, and perform body scans and meditations. This app tracks their progress, sends notifications, and is gamified for increased compliance.
+A: The app can be downloaded by users to aid in proper completion of their sensorimotor exercises as prescribed by their healthcare provider. It follows the principles of Graded Motor Imagery which is an evidence-based technique to create neuroplastic changes in the brain to address chronic centralized  pain, phantom limb syndrome, and Chronic Regional Pain Syndrome. \n\n
+
+It will provide a timer; interactive Q&amp;A for quizzing the user; short clips of body movements for watching; guided prompts for imagining scenarios; body-positive affirmations; body scans; and meditations. This app tracks progress, sends notifications, and is gamified for increased compliance
     </string>
     <string name="faq_a3">
-A: This answer depends on what level the user is on. For Laterality, the app should be used at least 5 times a day for at least 5min at a time. For Motor Imagery, the app should be used for 2hrs a day for at least 2 weeks. Finally, the Mirror Therapy should be completed every day for at least 20min until the user is symptom-free. This app also contains a reminder feature that can be activated and follows the above guidelines for the user’s convenience.
+A: This answer depends on what level the user is on and how severe their symptoms are. \n\n
+For Laterality, the app should be used at least 5 times a day for at least 5 minutes at a time. \n\n
+For Motor Imagery, the app should be used for 2 hours a day for at least 2 weeks. \n\n
+Finally, the Mirror Therapy should be completed every day for at least 20 minutes until the user is symptom-free. \n\n
+This app also contains a reminder feature that can be activated and follows the above guidelines for the user’s convenience.
     </string>
     <string name="faq_a4">
-A: The user should proceed in order from laterality training to imagined movements to mirror therapy.
+A: The user should proceed in order from Laterality Training to Imagined Movements to Mirror Therapy.
     </string>
     <string name="faq_a5">
 A: Here are some links that will take you to websites with articles, blogs, and other information on chronic pain, neuroplasticity, and the efficacy of GMI. \n \n
@@ -136,7 +150,10 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3141540 \n\n
 https://www.mayoclinic.org/diseases-conditions/phantom-pain/symptoms-causes/syc-20376272 \n\n
 https://www.ninds.nih.gov/Disorders/Patient-Caregiver-Education/Fact-Sheets/Complex-Regional-Pain-Syndrome-Fact-Sheet \n\n
 https://www.theacpa.org \n\n
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1820749
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1820749 \n\n
+Orientate App: https://apps.apple.com/us/app/orientate-pain-management/id479540062; https://play.google.com/store/apps/details?id=com.reflexpainmanagement.orientatefree&amp;hl=en_GB&amp;gl=US \n\n
+Recognise App: https://www.noigroup.com/product/recogniseapp/
+
     </string>
 
     <string name="edit">Edit</string>

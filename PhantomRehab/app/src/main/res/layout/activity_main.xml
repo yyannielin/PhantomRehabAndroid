@@ -97,29 +97,32 @@
         app:cornerRadius="35dp" />
 
     <TextView
-        android:id="@+id/sign_up_reminder"
+        android:id="@+id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
 
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/raleway"
-        android:text="@string/don_t_have_an_account"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:layout_marginBottom="34dp"
-        android:fontFamily="@font/raleway"
         android:text="@string/sign_up_underline"
         android:textColor="@color/blue_link"
         android:textColorLink="@color/blue_link"
         android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/forget_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/raleway"
+        android:text="@string/forget_pw"
+        android:textColor="@color/blue_link"
+        android:textColorLink="@color/blue_link"
+        android:textSize="20sp"
+        android:onClick="forgetPw"
         />
 
     <RelativeLayout

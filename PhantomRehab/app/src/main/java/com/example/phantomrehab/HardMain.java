@@ -69,18 +69,18 @@ public class HardMain extends AppCompatActivity {
             TextView navbar = findViewById(R.id.navbar);
             navbar.setBackgroundColor(getColor());
 
-            Button btn = findViewById(R.id.btn_done);
-            btn.setBackgroundTintList(ColorStateList.valueOf(getColor()));
+            Next = findViewById(R.id.btn_next);
+            Next.setBackgroundTintList(ColorStateList.valueOf(getColor()));
 
             chronometer = findViewById(R.id.chronometer);
             start = findViewById(R.id.start);
-            TextView progress = findViewById(R.id.save_progress);
+            Button progress = findViewById(R.id.save_progress);
             pause = findViewById(R.id.pause);
             stop = findViewById(R.id.stop);
 
             chronometer.setTextColor(getColor());
             start.setTextColor(getColor());
-            progress.setTextColor(getColor());
+            progress.setBackgroundTintList(ColorStateList.valueOf(getColor()));
 
             pause.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
             stop.setColorFilter(getColor(), PorterDuff.Mode.SRC_IN);
@@ -170,7 +170,6 @@ public class HardMain extends AppCompatActivity {
         });
 
         //call camera
-        Next = findViewById(R.id.btn_next);
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
